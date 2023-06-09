@@ -209,7 +209,7 @@ export default function MiniDrawer() {
         <Routes>
           <Route path="/page1" element={<Page1 />} />
           <Route path="/" element={<Welcome />} />
-          <Route path="/page/rlsb-temperature" element={<Welcome />} />
+          <Route path="/page/rlsb-temperature" element={<Page1 />} />
         </Routes>
       </Box>
     </Router>
