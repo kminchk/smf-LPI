@@ -19,6 +19,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"; // นำเข้าคอมโพเนนต์สำหรับการจัดการเส้นทางในแ
 import Page1 from "./Page/Page1"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
+import Page2 from "./Page/Page1-RDFLV-MCK"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
 import Fuji from "../public/Fuji.png"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
 import StackedLineChartIcon from "@mui/icons-material/StackedLineChart";
 
@@ -203,7 +204,7 @@ export default function MiniDrawer() {
 
         <DrawerHeader />
         <Routes>
-          <Route path="/" element={<Page1 />} />
+          <Route path="/" element={<Page2 />} />
           <Route path="/page/rlsb-r2-36-62" element={<Page1 />} />
         </Routes>
       </Box>
