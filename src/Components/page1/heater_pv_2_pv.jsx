@@ -1,9 +1,14 @@
 import React from "react";
 import Plot from "react-plotly.js";
+import Chip from "@mui/material/Chip";
+import Avatar from "@mui/material/Avatar";
 
 const ChartComponent = ({ categories, heaterPv, title }) => {
   const latestValue = heaterPv[heaterPv.length - 1]; // ค่าล่าสุด
   const datelast = categories[categories.length - 1]; // ค่าล่าสุด
+
+  const isInRange = latestValue >= 179 && latestValue <= 219;
+  const chipColor = isInRange ? "primary" : "error";
 
   const data = [
     {
@@ -39,7 +44,7 @@ const ChartComponent = ({ categories, heaterPv, title }) => {
   ];
 
   const layout = {
-    title: "Chart",
+    title: "Heater PV 2 PV",
     xaxis: {
       tickangle: -45, // มุมการหมุนของเลเบลแกน x
       automargin: true, // ปรับขนาดแกน x ให้พอดีกับเลเบล
@@ -60,16 +65,19 @@ const ChartComponent = ({ categories, heaterPv, title }) => {
   };
 
   return (
-    <div>
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">
-            {title} {latestValue} {datelast}
-          </h5>
-        </div>
+    <>
+      <div style={{ display: "flex", justifyContent: "right" }}>
+        <Chip
+          variant="outlined"
+          color={chipColor}
+          avatar={<Avatar>{latestValue}</Avatar>}
+          label={title}
+        />
       </div>
-      <Plot data={data} layout={layout} config={{ responsive: true }} />
-    </div>
+      <div>
+        <Plot data={data} layout={layout} config={{ responsive: true }} />
+      </div>
+    </>
   );
 };
 

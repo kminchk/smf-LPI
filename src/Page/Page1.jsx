@@ -12,7 +12,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import Plot from "react-plotly.js";
 import axios from "axios";
-
+import Chip from "@mui/material/Chip";
+import Avatar from "@mui/material/Avatar";
 import ChartComponent from "../Components/page1/heater_pv_1_pv";
 import ChartComponent2 from "../Components/page1/heater_pv_2_pv";
 import ChartComponent3 from "../Components/page1/Ir1_pv_12_pv";
@@ -148,6 +149,15 @@ export default function QuantitySelect() {
                 }}
                 sx={{ width: "100%" }}
               />
+            </Grid>
+            <Grid item xs={10}>
+              <div style={{ display: "flex", justifyContent: "right" }}>
+                <Chip
+                  variant="outlined"
+                  color="primary"
+                  label={categories[categories.length - 1]}
+                />
+              </div>
             </Grid>
             <Grid item xs={12}>
               <Item>

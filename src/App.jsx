@@ -17,12 +17,8 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"; // นำเข้าคอมโพเนนต์สำหรับการจัดการเส้นทางในแ
 import Page1 from "./Page/Page1"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
-import Welcome from "./Page/RLSB-Temperature"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
-import PollIcon from "@mui/icons-material/Poll";
 import Fuji from "../public/Fuji.png"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
 import StackedLineChartIcon from "@mui/icons-material/StackedLineChart";
 
@@ -173,7 +169,7 @@ export default function MiniDrawer() {
 
           <Divider />
           <List>
-            {["RLSB-Temperature"].map((text, index) => (
+            {["RLSB-R2-36-62", "RLSE"].map((text, index) => (
               <ListItem key={text} disablePadding sx={{ display: "block" }}>
                 <ListItemButton
                   sx={{
@@ -208,8 +204,8 @@ export default function MiniDrawer() {
         <DrawerHeader />
         <Routes>
           <Route path="/page1" element={<Page1 />} />
-          <Route path="/" element={<Welcome />} />
-          <Route path="/page/rlsb-temperature" element={<Page1 />} />
+          <Route path="/" element={<Page1 />} />
+          <Route path="/page/rlsb-r2-36-62" element={<Page1 />} />
         </Routes>
       </Box>
     </Router>

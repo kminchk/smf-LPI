@@ -1,5 +1,7 @@
 import React from "react";
 import Plot from "react-plotly.js";
+import Chip from "@mui/material/Chip";
+import Avatar from "@mui/material/Avatar";
 
 const ChartComponent = ({
   categories,
@@ -13,6 +15,16 @@ const ChartComponent = ({
   const latestValue3 = ir1_pv_5_pv[ir1_pv_5_pv.length - 1]; // ค่าล่าสุด
   const latestValue4 = ir1_pv_6_pv[ir1_pv_6_pv.length - 1]; // ค่าล่าสุด
   const datelast = categories[categories.length - 1]; // ค่าล่าสุด
+
+  const isInRange1 = latestValue1 >= 176 && latestValue1 <= 196;
+  const isInRange2 = latestValue2 >= 176 && latestValue2 <= 196;
+  const isInRange3 = latestValue3 >= 176 && latestValue3 <= 196;
+  const isInRange4 = latestValue4 >= 176 && latestValue4 <= 196;
+
+  const chipColor1 = isInRange1 ? "primary" : "error";
+  const chipColor2 = isInRange2 ? "primary" : "error";
+  const chipColor3 = isInRange3 ? "primary" : "error";
+  const chipColor4 = isInRange4 ? "primary" : "error";
 
   const data = [
     {
@@ -78,7 +90,7 @@ const ChartComponent = ({
   ];
 
   const layout = {
-    title: "Chart",
+    title: "IR1 PV 3,4,5,6 PV",
     xaxis: {
       tickangle: -45, // มุมการหมุนของเลเบลแกน x
       automargin: true, // ปรับขนาดแกน x ให้พอดีกับเลเบล
@@ -99,19 +111,37 @@ const ChartComponent = ({
   };
 
   return (
-    <div>
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">
-            {/* {title} {latestValue1} {datelast}
-            {title} {latestValue2} {datelast}
-            {title} {latestValue3} {datelast}
-            {title} {latestValue4} {datelast} */}
-          </h5>
-        </div>
+    <>
+      <div style={{ display: "flex", justifyContent: "right" }}>
+        <Chip
+          variant="outlined"
+          color={chipColor1}
+          avatar={<Avatar>{latestValue1}</Avatar>}
+          label="ir1_pv_3_pv"
+        />
+        <Chip
+          variant="outlined"
+          color={chipColor2}
+          avatar={<Avatar>{latestValue2}</Avatar>}
+          label="ir1_pv_4_pv"
+        />
+        <Chip
+          variant="outlined"
+          color={chipColor3}
+          avatar={<Avatar>{latestValue3}</Avatar>}
+          label="ir1_pv_5_pv"
+        />
+        <Chip
+          variant="outlined"
+          color={chipColor4}
+          avatar={<Avatar>{latestValue4}</Avatar>}
+          label="ir1_pv_6_pv"
+        />
       </div>
-      <Plot data={data} layout={layout} config={{ responsive: true }} />
-    </div>
+      <div>
+        <Plot data={data} layout={layout} config={{ responsive: true }} />
+      </div>
+    </>
   );
 };
 

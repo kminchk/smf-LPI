@@ -1,10 +1,18 @@
 import React from "react";
 import Plot from "react-plotly.js";
+import Chip from "@mui/material/Chip";
+import Avatar from "@mui/material/Avatar";
 
 const ChartComponent = ({ ir2_pv_1_pv, ir2_pv_2_pv, title, categories }) => {
   const latestValue1 = ir2_pv_1_pv[ir2_pv_1_pv.length - 1]; // ค่าล่าสุด
   const latestValue2 = ir2_pv_2_pv[ir2_pv_2_pv.length - 1]; // ค่าล่าสุด
   const datelast = categories[categories.length - 1]; // ค่าล่าสุด
+
+  const isInRange1 = latestValue1 >= 179 && latestValue1 <= 219;
+  const isInRange2 = latestValue2 >= 179 && latestValue2 <= 219;
+
+  const chipColor1 = isInRange1 ? "primary" : "error";
+  const chipColor2 = isInRange2 ? "primary" : "error";
 
   const data = [
     {
@@ -50,7 +58,7 @@ const ChartComponent = ({ ir2_pv_1_pv, ir2_pv_2_pv, title, categories }) => {
   ];
 
   const layout = {
-    title: "Chart",
+    title: "IR2 PV 1,2 PV",
     xaxis: {
       tickangle: -45, // มุมการหมุนของเลเบลแกน x
       automargin: true, // ปรับขนาดแกน x ให้พอดีกับเลเบล
@@ -71,17 +79,25 @@ const ChartComponent = ({ ir2_pv_1_pv, ir2_pv_2_pv, title, categories }) => {
   };
 
   return (
-    <div>
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">
-            {"latestValue1"} {latestValue1} {datelast}
-            {"latestValue2"} {latestValue2} {datelast}
-          </h5>
-        </div>
+    <>
+      <div style={{ display: "flex", justifyContent: "right" }}>
+        <Chip
+          variant="outlined"
+          color={chipColor1}
+          avatar={<Avatar>{latestValue1}</Avatar>}
+          label="ir2_pv_1_pv"
+        />
+        <Chip
+          variant="outlined"
+          color={chipColor2}
+          avatar={<Avatar>{latestValue2}</Avatar>}
+          label="ir2_pv_2_pv"
+        />
       </div>
-      <Plot data={data} layout={layout} config={{ responsive: true }} />
-    </div>
+      <div>
+        <Plot data={data} layout={layout} config={{ responsive: true }} />
+      </div>
+    </>
   );
 };
 
