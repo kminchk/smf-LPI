@@ -23,7 +23,7 @@ FROM nginx:stable-alpine
 COPY --from=0 /app/dist /usr/share/nginx/html
 
 # สำหรับการสื่อสารกับแอปพลิเคชัน React ที่ทำงานใน Docker container
-EXPOSE 80
+EXPOSE 84
 
 # รัน Nginx
 CMD ["nginx", "-g", "daemon off;"]
@@ -32,5 +32,5 @@ CMD ["nginx", "-g", "daemon off;"]
 #docker build -t <images> .
 #docker run -p 80:80 --name <container> <images>
 
-#docker build -t smf-aoi .
-#docker run -p 8080:80 --name smf-aoi-container smf-aoi
+#docker build -t smf-lpi .
+#docker run -p 84:84 --name smf-lpi-container smf-lpi

@@ -203,7 +203,6 @@ export default function MiniDrawer() {
 
         <DrawerHeader />
         <Routes>
-          <Route path="/page1" element={<Page1 />} />
           <Route path="/" element={<Page1 />} />
           <Route path="/page/rlsb-r2-36-62" element={<Page1 />} />
         </Routes>
