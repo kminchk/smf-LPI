@@ -4,11 +4,25 @@ import Chip from "@mui/material/Chip";
 import Avatar from "@mui/material/Avatar";
 
 const ChartComponent = ({ dataplot, categories }) => {
-  // ดึงค่าล่าสุดจาก dataplot
-  const latestValues = {
-    max_uv_intens_f_side: dataplot[dataplot.length - 1].max_uv_intens_f_side,
-    max_uv_intens_b_side: dataplot[dataplot.length - 1].max_uv_intens_b_side,
-  };
+  // Define the keys to retrieve from dataplot
+  const keys = [
+    "after_vac_center_x_pv",
+    "after_vac_center_y_pv",
+    "after_vac_pos_1x_pv",
+    "after_vac_pos_2x_pv",
+    "after_vac_pos_3x_pv",
+    "after_vac_pos_4x_pv",
+    "after_vac_pos_1y_pv",
+    "after_vac_pos_2y_pv",
+    "after_vac_pos_3y_pv",
+    "after_vac_pos_4y_pv",
+  ];
+
+  // Retrieve the latest values for the specified keys
+  const latestValues = keys.reduce((result, key) => {
+    result[key] = dataplot[dataplot.length - 1][key];
+    return result;
+  }, {});
 
   // สร้างชิปสำหรับแสดงค่าล่าสุดแต่ละตัว
   const latestValueChips = Object.entries(latestValues).map(([key, value]) => (

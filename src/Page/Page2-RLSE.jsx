@@ -15,7 +15,7 @@ import { format } from "date-fns";
 import Autocomplete from "@mui/material/Autocomplete";
 import axios from "axios";
 import Chip from "@mui/material/Chip";
-
+import ChartComponent from "../Components/Page2/plot1";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -206,20 +206,12 @@ export default function QuantitySelect() {
                   <Box maxWidth="xl" sx={{ height: 800, width: "100%" }}>
                     <Grid container spacing={2}>
                       <Grid item xl={12} mt={2}>
-                        {/* <Item>
+                        <Item>
                           <ChartComponent
                             dataplot={data}
                             categories={categories}
                           />
                         </Item>
-                      </Grid>
-                      <Grid item xl={12} mt={2}>
-                        <Item>
-                          <ChartComponent2
-                            dataplot={data}
-                            categories={categories}
-                          />
-                        </Item> */}
                       </Grid>
                     </Grid>
                   </Box>
