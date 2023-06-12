@@ -50,9 +50,9 @@ const ChartComponent = ({ dataplot, categories }) => {
     y: dataplot.map((item) => item[key]),
     type: "scatter",
     mode: "lines",
-    line: {
-      color: key === "after_vac_center_x_pv" ? "#FF0000" : "#0161FF",
-    },
+    // line: {
+    //   color: key === "after_vac_center_x_pv" ? "#FF0000" : "#0161FF",
+    // },
     name: key,
   }));
   // data.push({
