@@ -118,7 +118,7 @@ export default function QuantitySelect() {
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="xl">
-        <Box sx={{ bgcolor: "#ffffff", height: "100vh", paddingTop: 10 }}>
+        <Box sx={{ bgcolor: "#ffffff", height: "100vh" }}>
           <Grid container spacing={2}>
             <Grid item xs={2}>
               <TextField
