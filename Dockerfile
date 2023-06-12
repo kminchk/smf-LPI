@@ -32,5 +32,5 @@ CMD ["nginx", "-g", "daemon off;"]
 #docker build -t <images> .
 #docker run -p 80:80 --name <container> <images>
 
-#docker build -t smf-lpi .
-#docker run -p 84:84 --name smf-lpi-container smf-lpi
+# docker build -t smf-lpi .
+# docker run -p 84:84 --name smf-lpi-container smf-lpi
