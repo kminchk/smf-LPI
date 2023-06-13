@@ -170,7 +170,7 @@ export default function MiniDrawer() {
 
           <Divider />
           <List>
-            {["RLSB-R2-36-62", "RLSE"].map((text, index) => (
+            {["RLSB-R2-36-62", "RLSE-Alingment"].map((text, index) => (
               <ListItem key={text} disablePadding sx={{ display: "block" }}>
                 <ListItemButton
                   sx={{
@@ -206,7 +206,7 @@ export default function MiniDrawer() {
           <Routes>
             <Route path="/" element={<Page1 />} />
             <Route path="/page/rlsb-r2-36-62" element={<Page1 />} />
-            <Route path="/page/rlse" element={<Page2 />} />
+            <Route path="/page/rlse-alingment" element={<Page2 />} />
           </Routes>
         </Box>
       </Box>
