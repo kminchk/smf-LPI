@@ -65,6 +65,28 @@ const ChartComponent = ({ dataplot, categories }) => {
   //   },
   //   name: "after_vac_center_x_pv", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
   // });
+  // เพิ่มเส้น Trace อีก 1 เส้น
+  data.push({
+    x: categories,
+    y: Array(categories.length).fill(35),
+    type: "scatter",
+    mode: "lines",
+    line: {
+      color: "#FF0000", // เปลี่ยนสีตามต้องการ
+    },
+    name: "Maximum", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
+  });
+  // เพิ่มเส้น Trace อีก 1 เส้น
+  data.push({
+    x: categories,
+    y: Array(categories.length).fill(-35),
+    type: "scatter",
+    mode: "lines",
+    line: {
+      color: "#FF0000", // เปลี่ยนสีตามต้องการ
+    },
+    name: "Minimum", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
+  });
   const layout = {
     title: "Alignment X",
     xaxis: {
