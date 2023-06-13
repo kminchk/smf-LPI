@@ -108,17 +108,15 @@ export default function QuantitySelect() {
       const dataapi = response.data;
       setData(dataapi);
       console.log(dataapi);
-      const categories = data.map((item) => {
+      const categories = dataapi.map((item) => {
         let date = new Date(item.ptime);
         return date.toLocaleString();
       });
-      setCategories(categories);
-      setData(dataapi);
+      setCategories(categories); // ตั้งค่า categories ที่นี่
     } catch (error) {
       console.error(`Error fetching distinct machines: ${error}`);
     }
   };
-
   return (
     <React.Fragment>
       <CssBaseline />
