@@ -159,66 +159,80 @@ export default function QuantitySelect() {
                 />
               </div>
             </Grid>
-            <Grid item xs={12}>
-              <Item>
-                <ChartComponent
-                  categories={categories}
-                  heaterPv={heater_pv_1_pv}
-                  title={"heater_pv_1_pv"}
-                />
-              </Item>
-            </Grid>
-            <Grid item xs={12}>
-              <Item>
-                <ChartComponent3
-                  categories={categories}
-                  ir1_pv_1_pv={ir1_pv_1_pv}
-                  ir1_pv_2_pv={ir1_pv_2_pv}
-                  title={"Ir1_pv_12_pv"}
-                />
-              </Item>
-            </Grid>
-            <Grid item xs={12}>
-              <Item>
-                <ChartComponent2
-                  categories={categories}
-                  heaterPv={heater_pv_2_pv}
-                  title={"heater_pv_2_pv"}
-                />
-              </Item>
-            </Grid>
-            <Grid item xs={12}>
-              <Item>
-                <ChartComponent4
-                  categories={categories}
-                  ir2_pv_1_pv={ir2_pv_1_pv}
-                  ir2_pv_2_pv={ir2_pv_2_pv}
-                  title={"Ir2_pv_12_pv"}
-                />
-              </Item>
-            </Grid>
-            <Grid item xs={12}>
-              <Item>
-                <ChartComponent5
-                  categories={categories}
-                  heaterPv1={heater_pv_3_pv}
-                  heaterPv2={heater_pv_4_pv}
-                  heaterPv3={heater_pv_5_pv}
-                  heaterPv4={heater_pv_6_pv}
-                />
-              </Item>
-            </Grid>
-            <Grid item xs={12}>
-              <Item>
-                <ChartComponent6
-                  categories={categories}
-                  ir1_pv_3_pv={ir1_pv_3_pv}
-                  ir1_pv_4_pv={ir1_pv_4_pv}
-                  ir1_pv_5_pv={ir1_pv_5_pv}
-                  ir1_pv_6_pv={ir1_pv_6_pv}
-                />
-              </Item>
-            </Grid>
+            {data.length > 0 ? (
+              <React.Fragment>
+                <Grid item xs={12}>
+                  <Item>
+                    <ChartComponent
+                      categories={categories}
+                      heaterPv={heater_pv_1_pv}
+                      title={"heater_pv_1_pv"}
+                    />
+                  </Item>
+                </Grid>
+                <Grid item xs={12}>
+                  <Item>
+                    <ChartComponent3
+                      categories={categories}
+                      ir1_pv_1_pv={ir1_pv_1_pv}
+                      ir1_pv_2_pv={ir1_pv_2_pv}
+                      title={"Ir1_pv_12_pv"}
+                    />
+                  </Item>
+                </Grid>
+                <Grid item xs={12}>
+                  <Item>
+                    <ChartComponent2
+                      categories={categories}
+                      heaterPv={heater_pv_2_pv}
+                      title={"heater_pv_2_pv"}
+                    />
+                  </Item>
+                </Grid>
+                <Grid item xs={12}>
+                  <Item>
+                    <ChartComponent4
+                      categories={categories}
+                      ir2_pv_1_pv={ir2_pv_1_pv}
+                      ir2_pv_2_pv={ir2_pv_2_pv}
+                      title={"Ir2_pv_12_pv"}
+                    />
+                  </Item>
+                </Grid>
+                <Grid item xs={12}>
+                  <Item>
+                    <ChartComponent5
+                      categories={categories}
+                      heaterPv1={heater_pv_3_pv}
+                      heaterPv2={heater_pv_4_pv}
+                      heaterPv3={heater_pv_5_pv}
+                      heaterPv4={heater_pv_6_pv}
+                    />
+                  </Item>
+                </Grid>
+                <Grid item xs={12}>
+                  <Item>
+                    <ChartComponent6
+                      categories={categories}
+                      ir1_pv_3_pv={ir1_pv_3_pv}
+                      ir1_pv_4_pv={ir1_pv_4_pv}
+                      ir1_pv_5_pv={ir1_pv_5_pv}
+                      ir1_pv_6_pv={ir1_pv_6_pv}
+                    />
+                  </Item>
+                </Grid>
+              </React.Fragment>
+            ) : (
+              <Container maxWidth="xl">
+                <Box maxWidth="xl" sx={{ height: 800, width: "100%" }}>
+                  <Grid container spacing={2}>
+                    <Grid item xl={12} mt={2}>
+                      <Item>... Wait Data API ...</Item>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Container>
+            )}
           </Grid>
         </Box>
       </Container>
