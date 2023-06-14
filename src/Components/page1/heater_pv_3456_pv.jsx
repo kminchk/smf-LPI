@@ -116,25 +116,81 @@ const ChartComponent = ({
         <Chip
           variant="outlined"
           color={chipColor1}
-          avatar={<Avatar>{latestValue1}</Avatar>}
+          avatar={
+            <Avatar
+              style={{
+                width: `${
+                  latestValue1.toString().length >= 3
+                    ? latestValue1.toString().length * 10
+                    : "auto"
+                }px`,
+                height: "auto",
+                borderRadius: `${latestValue1.toString().length * 2}px`,
+              }}
+            >
+              {latestValue1}
+            </Avatar>
+          }
           label="heater_pv_6_pv"
         />
         <Chip
           variant="outlined"
           color={chipColor2}
-          avatar={<Avatar>{latestValue2}</Avatar>}
+          avatar={
+            <Avatar
+              style={{
+                width: `${
+                  latestValue2.toString().length >= 3
+                    ? latestValue2.toString().length * 10
+                    : "auto"
+                }px`,
+                height: "auto",
+                borderRadius: `${latestValue2.toString().length * 2}px`,
+              }}
+            >
+              {latestValue2}
+            </Avatar>
+          }
           label="heater_pv_6_pv"
         />
         <Chip
           variant="outlined"
           color={chipColor3}
-          avatar={<Avatar>{latestValue3}</Avatar>}
+          avatar={
+            <Avatar
+              style={{
+                width: `${
+                  latestValue3.toString().length >= 3
+                    ? latestValue3.toString().length * 10
+                    : "auto"
+                }px`,
+                height: "auto",
+                borderRadius: `${latestValue3.toString().length * 2}px`,
+              }}
+            >
+              {latestValue3}
+            </Avatar>
+          }
           label="heater_pv_6_pv"
         />
         <Chip
           variant="outlined"
           color={chipColor4}
-          avatar={<Avatar>{latestValue4}</Avatar>}
+          avatar={
+            <Avatar
+              style={{
+                width: `${
+                  latestValue4.toString().length >= 3
+                    ? latestValue4.toString().length * 10
+                    : "auto"
+                }px`,
+                height: "auto",
+                borderRadius: `${latestValue4.toString().length * 2}px`,
+              }}
+            >
+              {latestValue4}
+            </Avatar>
+          }
           label="heater_pv_6_pv"
         />
       </div>

@@ -10,10 +10,8 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
-import Plot from "react-plotly.js";
 import axios from "axios";
 import Chip from "@mui/material/Chip";
-import Avatar from "@mui/material/Avatar";
 import ChartComponent from "../Components/page1/heater_pv_1_pv";
 import ChartComponent2 from "../Components/page1/heater_pv_2_pv";
 import ChartComponent3 from "../Components/page1/Ir1_pv_12_pv";
@@ -121,35 +119,38 @@ export default function QuantitySelect() {
         <Box sx={{ bgcolor: "#ffffff", height: "100vh" }}>
           <Grid container spacing={2}>
             <Grid item xs={2}>
-              <TextField
-                type="number"
-                value={quantity}
-                onChange={handleQuantityChange}
-                label="Hr"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <IconButton onClick={handleDecrement}>
-                        <RemoveIcon />
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton onClick={handleIncrement}>
-                        <AddIcon />
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                  inputProps: {
-                    style: {
-                      textAlign: "center",
+              <Item>
+                <TextField
+                  type="number"
+                  value={quantity}
+                  onChange={handleQuantityChange}
+                  label="Hr"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <IconButton onClick={handleDecrement}>
+                          <RemoveIcon />
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton onClick={handleIncrement}>
+                          <AddIcon />
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                    inputProps: {
+                      style: {
+                        textAlign: "center",
+                      },
                     },
-                  },
-                }}
-                sx={{ width: "100%" }}
-              />
+                  }}
+                  sx={{ width: "100%" }}
+                />
+              </Item>
             </Grid>
+
             <Grid item xs={10}>
               <div style={{ display: "flex", justifyContent: "right" }}>
                 <Chip

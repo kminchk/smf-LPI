@@ -84,13 +84,41 @@ const ChartComponent = ({ ir2_pv_1_pv, ir2_pv_2_pv, title, categories }) => {
         <Chip
           variant="outlined"
           color={chipColor1}
-          avatar={<Avatar>{latestValue1}</Avatar>}
+          avatar={
+            <Avatar
+              style={{
+                width: `${
+                  latestValue1.toString().length >= 3
+                    ? latestValue1.toString().length * 10
+                    : "auto"
+                }px`,
+                height: "auto",
+                borderRadius: `${latestValue1.toString().length * 2}px`,
+              }}
+            >
+              {latestValue1}
+            </Avatar>
+          }
           label="ir2_pv_1_pv"
         />
         <Chip
           variant="outlined"
           color={chipColor2}
-          avatar={<Avatar>{latestValue2}</Avatar>}
+          avatar={
+            <Avatar
+              style={{
+                width: `${
+                  latestValue2.toString().length >= 3
+                    ? latestValue2.toString().length * 10
+                    : "auto"
+                }px`,
+                height: "auto",
+                borderRadius: `${latestValue2.toString().length * 2}px`,
+              }}
+            >
+              {latestValue2}
+            </Avatar>
+          }
           label="ir2_pv_2_pv"
         />
       </div>

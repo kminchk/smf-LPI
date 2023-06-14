@@ -70,7 +70,21 @@ const ChartComponent = ({ categories, heaterPv, title }) => {
         <Chip
           variant="outlined"
           color={chipColor}
-          avatar={<Avatar>{latestValue}</Avatar>}
+          avatar={
+            <Avatar
+              style={{
+                width: `${
+                  latestValue.toString().length >= 3
+                    ? latestValue.toString().length * 10
+                    : "auto"
+                }px`,
+                height: "auto",
+                borderRadius: `${latestValue.toString().length * 2}px`,
+              }}
+            >
+              {latestValue}
+            </Avatar>
+          }
           label={title}
         />
       </div>

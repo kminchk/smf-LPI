@@ -24,13 +24,13 @@ const ChartComponent = ({ dataplot, categories }) => {
     <Chip
       key={key}
       variant="outlined"
-      color={value <= 200000 ? "primary" : "error"}
+      color={value >= -35 && value <= 35 ? "primary" : "error"}
       avatar={
         <Avatar
           style={{
             width: `${
               value.toString().length >= 3
-                ? value.toString().length * 8
+                ? value.toString().length * 10
                 : "auto"
             }px`,
             height: "auto",
