@@ -15,7 +15,7 @@ import { format } from "date-fns";
 import Autocomplete from "@mui/material/Autocomplete";
 import axios from "axios";
 import Chip from "@mui/material/Chip";
-import ChartComponent from "../Components/Page3/plot1x";
+import ChartComponent from "../Components/Page4/plot1x";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -39,42 +39,42 @@ export default function QuantitySelect() {
     setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
   };
 
-  const [selectedMachine, setselectedMachine] = useState(null);
-  const [distinctMachine, setdistinctMachine] = useState([]);
-  const fetchdistinctMachine = async () => {
+  const [selectedmc_code, setselectedmc_code] = useState(null);
+  const [distinctmc_code, setdistinctmc_code] = useState([]);
+  const fetchdistinctmc_code = async () => {
     try {
       const response = await axios.get(
-        "http://10.17.77.111:3001/api/jwdb_rlse_beac/distinctMachine"
+        "http://127.0.0.1:3001/api/jwdb_rphp_beac_actv/distinctmc_code"
       );
-      const distinctMachine = response.data;
-      setdistinctMachine(distinctMachine);
+      const distinctmc_code = response.data;
+      setdistinctmc_code(distinctmc_code);
     } catch (error) {
       console.error(`Error fetching distinct factories: ${error}`);
     }
   };
-  const handleMachineChange = (event, newValue) => {
+  const handlemc_codeChange = (event, newValue) => {
     console.log(newValue);
-    setselectedMachine(newValue);
+    setselectedmc_code(newValue);
   };
 
   useEffect(() => {
-    fetchdistinctMachine();
+    fetchdistinctmc_code();
   }, []);
 
   const [data, setData] = useState([]);
   const [categories, setCategories] = useState([]);
   useEffect(() => {
-    if (selectedMachine !== null) {
+    if (selectedmc_code !== null) {
       fetchDataapi();
-    } else if (selectedMachine === null) {
+    } else if (selectedmc_code === null) {
       setData([]);
     }
-  }, [selectedMachine, quantity]);
+  }, [selectedmc_code, quantity]);
 
   const fetchDataapi = async () => {
     try {
       const response = await axios.get(
-        `http://10.17.77.111:3001/api/jwdb_rlse_beac/dataplot?Machine=${selectedMachine.Machine}&hours=${quantity}`
+        `http://127.0.0.1:3001/api/jwdb_rphp_beac_actv/data-plot?mc_code=${selectedmc_code.mc_code}&hours=${quantity}`
       );
       const dataapi = response.data;
       setData(dataapi);
@@ -85,7 +85,7 @@ export default function QuantitySelect() {
       });
       setCategories(categories); // ตั้งค่า categories ที่นี่
     } catch (error) {
-      console.error(`Error fetching distinct machines: ${error}`);
+      console.error(`Error fetching distinct mc_codes: ${error}`);
     }
   };
   return (
@@ -97,15 +97,15 @@ export default function QuantitySelect() {
             <Grid item xs={3} md={3}>
               <Item>
                 <Autocomplete
-                  options={distinctMachine}
-                  getOptionLabel={(option) => option && option.Machine}
-                  value={selectedMachine}
-                  onChange={handleMachineChange}
+                  options={distinctmc_code}
+                  getOptionLabel={(option) => option && option.mc_code}
+                  value={selectedmc_code}
+                  onChange={handlemc_codeChange}
                   sx={{ width: "100%" }}
                   renderInput={(params) => (
                     <TextField
                       {...params}
-                      label="เลือก Machine"
+                      label="เลือก mc_code"
                       variant="outlined"
                     />
                   )}
