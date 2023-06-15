@@ -21,6 +21,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Page1 from "./Page/Page1"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
 import Page2 from "./Page/Page2-RLSE"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
 import Page3 from "./Page/Page3-RLSE-Cycle-Time"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
+import Page4 from "./Page/Page4-LRPHP"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
 import Fuji from "../public/Fuji.png"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
 import StackedLineChartIcon from "@mui/icons-material/StackedLineChart";
 
@@ -171,39 +172,39 @@ export default function MiniDrawer() {
 
           <Divider />
           <List>
-            {["RLSB-R2-36-62", "RLSE-Alingment", "RLSE-Cycle-Time"].map(
-              (text, index) => (
-                <ListItem key={text} disablePadding sx={{ display: "block" }}>
-                  <ListItemButton
+            {[
+              "RLSB-R2-36-62",
+              "RLSE-Alingment",
+              "RLSE-Cycle-Time",
+              "LRPHP#",
+            ].map((text, index) => (
+              <ListItem key={text} disablePadding sx={{ display: "block" }}>
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
+                  }}
+                  component={Link}
+                  to={`/page/${text.toLowerCase()}`} // เชื่อมโยงเส้นทางไปยัง `/page/:id` โดยใช้พารามิเตอร์จาก `text`
+                >
+                  <ListItemIcon
                     sx={{
-                      minHeight: 48,
-                      justifyContent: open ? "initial" : "center",
-                      px: 2.5,
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
                     }}
-                    component={Link}
-                    to={`/page/${text.toLowerCase()}`} // เชื่อมโยงเส้นทางไปยัง `/page/:id` โดยใช้พารามิเตอร์จาก `text`
                   >
-                    <ListItemIcon
-                      sx={{
-                        minWidth: 0,
-                        mr: open ? 3 : "auto",
-                        justifyContent: "center",
-                      }}
-                    >
-                      {index % 2 === 0 ? (
-                        <StackedLineChartIcon />
-                      ) : (
-                        <StackedLineChartIcon />
-                      )}
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={text}
-                      sx={{ opacity: open ? 1 : 0 }}
-                    />
-                  </ListItemButton>
-                </ListItem>
-              )
-            )}
+                    {index % 2 === 0 ? (
+                      <StackedLineChartIcon />
+                    ) : (
+                      <StackedLineChartIcon />
+                    )}
+                  </ListItemIcon>
+                  <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                </ListItemButton>
+              </ListItem>
+            ))}
           </List>
           <Divider />
         </Drawer>
@@ -214,6 +215,7 @@ export default function MiniDrawer() {
             <Route path="/page/rlsb-r2-36-62" element={<Page1 />} />
             <Route path="/page/rlse-alingment" element={<Page2 />} />
             <Route path="/page/rlse-cycle-time" element={<Page3 />} />
+            <Route path="/page/LRPHP" element={<Page4 />} />
           </Routes>
         </Box>
       </Box>
