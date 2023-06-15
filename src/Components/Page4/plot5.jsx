@@ -5,12 +5,7 @@ import Avatar from "@mui/material/Avatar";
 
 const ChartComponent = ({ dataplot, categories }) => {
   // Define the keys to retrieve from dataplot
-  const keys = [
-    "r_arm_measurement_x_value_pv",
-    "r_arm_measurement_y_value_pv",
-    "r_arm_measurement_x_max_pv",
-    "r_arm_measurement_y_max_pv",
-  ];
+  const keys = ["cycle_time_pv"];
 
   // Retrieve the latest values for the specified keys
   const latestValues = keys.reduce((result, key) => {
@@ -23,7 +18,7 @@ const ChartComponent = ({ dataplot, categories }) => {
     <Chip
       key={key}
       variant="outlined"
-      color={value <= 25 && value >= -25 ? "primary" : "error"}
+      color="primary"
       avatar={
         <Avatar
           style={{
@@ -62,36 +57,25 @@ const ChartComponent = ({ dataplot, categories }) => {
   }));
 
   // เพิ่มเส้น Trace อีก 1 เส้น
-  data.push({
-    x: categories,
-    y: Array(categories.length).fill(25),
-    type: "scatter",
-    mode: "lines",
-    line: {
-      color: "#FF0000", // เปลี่ยนสีตามต้องการ
-    },
-    name: "Target+", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
-  });
-  // เพิ่มเส้น Trace อีก 1 เส้น
-  data.push({
-    x: categories,
-    y: Array(categories.length).fill(-25),
-    type: "scatter",
-    mode: "lines",
-    line: {
-      color: "#FF0000", // เปลี่ยนสีตามต้องการ
-    },
-    name: "Target-", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
-  });
+  // data.push({
+  //   x: categories,
+  //   y: Array(categories.length).fill(14000000),
+  //   type: "scatter",
+  //   mode: "lines",
+  //   line: {
+  //     color: "#FF0000", // เปลี่ยนสีตามต้องการ
+  //   },
+  //   name: "USL", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
+  // });
 
   const layout = {
-    title: "Measurement R_arm Data",
+    title: "cycle_time_pv",
     xaxis: {
       tickangle: -45,
       automargin: true,
     },
     yaxis: {
-      title: "um.",
+      title: "Sec.",
     },
     width: 1450,
     height: 350,

@@ -16,6 +16,10 @@ import Autocomplete from "@mui/material/Autocomplete";
 import axios from "axios";
 import Chip from "@mui/material/Chip";
 import ChartComponent from "../Components/Page4/plot1x";
+import ChartComponent2 from "../Components/Page4/plot2";
+import ChartComponent3 from "../Components/Page4/plot3";
+import ChartComponent4 from "../Components/Page4/plot4";
+import ChartComponent5 from "../Components/Page4/plot5";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -44,7 +48,7 @@ export default function QuantitySelect() {
   const fetchdistinctmc_code = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:3001/api/jwdb_rphp_beac_actv/distinctmc_code"
+        "http://10.17.77.111:3001/api/jwdb_rphp_beac_actv/distinctmc_code"
       );
       const distinctmc_code = response.data;
       setdistinctmc_code(distinctmc_code);
@@ -74,7 +78,7 @@ export default function QuantitySelect() {
   const fetchDataapi = async () => {
     try {
       const response = await axios.get(
-        `http://127.0.0.1:3001/api/jwdb_rphp_beac_actv/data-plot?mc_code=${selectedmc_code.mc_code}&hours=${quantity}`
+        `http://10.17.77.111:3001/api/jwdb_rphp_beac_actv/data-plot?mc_code=${selectedmc_code.mc_code}&hours=${quantity}`
       );
       const dataapi = response.data;
       setData(dataapi);
@@ -162,6 +166,38 @@ export default function QuantitySelect() {
                       <Grid item xl={12} mt={2}>
                         <Item>
                           <ChartComponent
+                            dataplot={data}
+                            categories={categories}
+                          />
+                        </Item>
+                      </Grid>
+                      <Grid item xl={12} mt={2}>
+                        <Item>
+                          <ChartComponent2
+                            dataplot={data}
+                            categories={categories}
+                          />
+                        </Item>
+                      </Grid>
+                      <Grid item xl={12} mt={2}>
+                        <Item>
+                          <ChartComponent3
+                            dataplot={data}
+                            categories={categories}
+                          />
+                        </Item>
+                      </Grid>
+                      <Grid item xl={12} mt={2}>
+                        <Item>
+                          <ChartComponent4
+                            dataplot={data}
+                            categories={categories}
+                          />
+                        </Item>
+                      </Grid>
+                      <Grid item xl={12} mt={2}>
+                        <Item>
+                          <ChartComponent5
                             dataplot={data}
                             categories={categories}
                           />

@@ -6,16 +6,10 @@ import Avatar from "@mui/material/Avatar";
 const ChartComponent = ({ dataplot, categories }) => {
   // Define the keys to retrieve from dataplot
   const keys = [
-    // "cpk_x_data_upper_limit_pv",
-    // "cpk_x_data_lower_limit_pv",
-    "cpk_x_data_max_pv",
-    "cpk_x_data_min_pv",
-    "cpk_x_data_average_pv",
-    "cpk_y_data_max_pv",
-    "cpk_y_data_min_pv",
-    "cpk_y_data_average_pv",
-    // "cpk_y_data_upper_limit_pv",
-    // "cpk_y_data_lower_limit_pv",
+    "l_arm_measurement_x_value_pv",
+    "l_arm_measurement_y_value_pv",
+    "l_arm_measurement_x_max_pv",
+    "l_arm_measurement_y_max_pv",
   ];
 
   // Retrieve the latest values for the specified keys
@@ -55,60 +49,43 @@ const ChartComponent = ({ dataplot, categories }) => {
     y: dataplot.map((item) => item[key]),
     type: "scatter",
     mode: "lines",
-    line: {
-      color:
-        key === "cpk_x_data_upper_limit_pv" ||
-        key === "cpk_x_data_lower_limit_pv" ||
-        key === "cpk_y_data_upper_limit_pv" ||
-        key === "cpk_y_data_lower_limit_pv"
-          ? "#FF0000"
-          : "",
-    },
+    // line: {
+    //   color:
+    //     key === "cpk_x_data_upper_limit_pv" ||
+    //     key === "cpk_x_data_lower_limit_pv" ||
+    //     key === "cpk_y_data_upper_limit_pv" ||
+    //     key === "cpk_y_data_lower_limit_pv"
+    //       ? "#FF0000"
+    //       : "",
+    // },
     name: key,
   }));
+
+  // เพิ่มเส้น Trace อีก 1 เส้น
   data.push({
     x: categories,
-    y: dataplot.map((item) => -item.cpk_x_data_upper_limit_pv), // แทนที่ `another_key` ด้วยชื่อ key ที่ต้องการ
+    y: Array(categories.length).fill(25),
     type: "scatter",
     mode: "lines",
     line: {
       color: "#FF0000", // เปลี่ยนสีตามต้องการ
     },
-    name: "cpk_x_data_upper_limit_pv", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
+    name: "Target+", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
   });
+  // เพิ่มเส้น Trace อีก 1 เส้น
   data.push({
     x: categories,
-    y: dataplot.map((item) => -item.cpk_x_data_lower_limit_pv), // แทนที่ `another_key` ด้วยชื่อ key ที่ต้องการ
+    y: Array(categories.length).fill(-25),
     type: "scatter",
     mode: "lines",
     line: {
       color: "#FF0000", // เปลี่ยนสีตามต้องการ
     },
-    name: "cpk_x_data_lower_limit_pv", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
-  });
-  data.push({
-    x: categories,
-    y: dataplot.map((item) => -item.cpk_y_data_upper_limit_pv), // แทนที่ `another_key` ด้วยชื่อ key ที่ต้องการ
-    type: "scatter",
-    mode: "lines",
-    line: {
-      color: "#FF0000", // เปลี่ยนสีตามต้องการ
-    },
-    name: "cpk_y_data_upper_limit_pv", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
-  });
-  data.push({
-    x: categories,
-    y: dataplot.map((item) => -item.cpk_y_data_lower_limit_pv), // แทนที่ `another_key` ด้วยชื่อ key ที่ต้องการ
-    type: "scatter",
-    mode: "lines",
-    line: {
-      color: "#FF0000", // เปลี่ยนสีตามต้องการ
-    },
-    name: "cpk_y_data_lower_limit_pv", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
+    name: "Target-", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
   });
 
   const layout = {
-    title: "Measurement X,Y Data",
+    title: "Measurement L_arm Data",
     xaxis: {
       tickangle: -45,
       automargin: true,
