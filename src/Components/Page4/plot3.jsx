@@ -49,15 +49,15 @@ const ChartComponent = ({ dataplot, categories }) => {
     y: dataplot.map((item) => item[key]),
     type: "scatter",
     mode: "lines",
-    // line: {
-    //   color:
-    //     key === "cpk_x_data_upper_limit_pv" ||
-    //     key === "cpk_x_data_lower_limit_pv" ||
-    //     key === "cpk_y_data_upper_limit_pv" ||
-    //     key === "cpk_y_data_lower_limit_pv"
-    //       ? "#FF0000"
-    //       : "",
-    // },
+    line: {
+      color:
+        key === "cpk_x_data_upper_limit_pv" ||
+        key === "cpk_x_data_lower_limit_pv" ||
+        key === "cpk_y_data_upper_limit_pv" ||
+        key === "l_arm_measurement_y_max_pv"
+          ? "#00939A"
+          : "",
+    },
     name: key,
   }));
 

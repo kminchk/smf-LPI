@@ -57,11 +57,11 @@ const ChartComponent = ({ dataplot, categories }) => {
     mode: "lines",
     line: {
       color:
-        key === "cpk_x_data_upper_limit_pv" ||
+        key === "cpk_y_data_max_pv" ||
         key === "cpk_x_data_lower_limit_pv" ||
         key === "cpk_y_data_upper_limit_pv" ||
         key === "cpk_y_data_lower_limit_pv"
-          ? "#FF0000"
+          ? "#00939A "
           : "",
     },
     name: key,
