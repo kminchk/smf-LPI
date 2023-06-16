@@ -101,9 +101,9 @@ const ChartComponent = ({ dataplot, categories }) => {
       <div style={{ display: "flex", justifyContent: "right" }}>
         {latestValueChips}
       </div>
-      <div>
+      {/* <div>
         <Plot data={data} layout={layout} config={{ responsive: true }} />
-      </div>
+      </div> */}
     </>
   );
 };

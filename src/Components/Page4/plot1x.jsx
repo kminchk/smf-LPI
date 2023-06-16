@@ -8,10 +8,10 @@ const ChartComponent = ({ dataplot, categories }) => {
   const keys = [
     // "cpk_x_data_upper_limit_pv",
     // "cpk_x_data_lower_limit_pv",
-    "cpk_x_data_max_pv",
+    // "cpk_x_data_max_pv",
     "cpk_x_data_min_pv",
     "cpk_x_data_average_pv",
-    "cpk_y_data_max_pv",
+    // "cpk_y_data_max_pv",
     "cpk_y_data_min_pv",
     "cpk_y_data_average_pv",
     // "cpk_y_data_upper_limit_pv",

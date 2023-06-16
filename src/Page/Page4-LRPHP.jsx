@@ -164,6 +164,12 @@ export default function QuantitySelect() {
                   <Box maxWidth="xl" sx={{ height: 800, width: "100%" }}>
                     <Grid container spacing={2}>
                       <Grid item xl={12} mt={2}>
+                        <ChartComponent4
+                          dataplot={data}
+                          categories={categories}
+                        />
+                      </Grid>
+                      <Grid item xl={12} mt={2}>
                         <Item>
                           <ChartComponent
                             dataplot={data}
@@ -187,14 +193,14 @@ export default function QuantitySelect() {
                           />
                         </Item>
                       </Grid>
-                      <Grid item xl={12} mt={2}>
+                      {/* <Grid item xl={12} mt={2}>
                         <Item>
                           <ChartComponent4
                             dataplot={data}
                             categories={categories}
                           />
                         </Item>
-                      </Grid>
+                      </Grid> */}
                       <Grid item xl={12} mt={2}>
                         <Item>
                           <ChartComponent5
