@@ -63,7 +63,7 @@ const ChartComponent = ({ dataplot, categories }) => {
   //   type: "scatter",
   //   mode: "lines",
   //   line: {
-  //     color: "#FF0000", // เปลี่ยนสีตามต้องการ
+  //     color: "#ED4B04 ", // เปลี่ยนสีตามต้องการ
   //   },
   //   name: "USL", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
   // });

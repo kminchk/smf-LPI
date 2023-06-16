@@ -68,7 +68,7 @@ const ChartComponent = ({ dataplot, categories }) => {
     type: "scatter",
     mode: "lines",
     line: {
-      color: "#FF0000", // เปลี่ยนสีตามต้องการ
+      color: "#ED4B04 ", // เปลี่ยนสีตามต้องการ
     },
     name: "Target+", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
   });
@@ -79,11 +79,33 @@ const ChartComponent = ({ dataplot, categories }) => {
     type: "scatter",
     mode: "lines",
     line: {
-      color: "#FF0000", // เปลี่ยนสีตามต้องการ
+      color: "#ED4B04 ", // เปลี่ยนสีตามต้องการ
     },
     name: "Target-", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
   });
 
+  // เพิ่มเส้น Trace อีก 1 เส้น
+  data.push({
+    x: categories,
+    y: Array(categories.length).fill(50),
+    type: "scatter",
+    mode: "lines",
+    line: {
+      color: "#FF0000 ", // เปลี่ยนสีตามต้องการ
+    },
+    name: "USL", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
+  });
+  // เพิ่มเส้น Trace อีก 1 เส้น
+  data.push({
+    x: categories,
+    y: Array(categories.length).fill(-50),
+    type: "scatter",
+    mode: "lines",
+    line: {
+      color: "#FF0000 ", // เปลี่ยนสีตามต้องการ
+    },
+    name: "LSL", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
+  });
   const layout = {
     title: "Measurement R_arm Data",
     xaxis: {
