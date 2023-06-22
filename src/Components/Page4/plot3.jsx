@@ -8,8 +8,8 @@ const ChartComponent = ({ dataplot, categories }) => {
   const keys = [
     "l_arm_measurement_x_value_pv",
     "l_arm_measurement_y_value_pv",
-    // "l_arm_measurement_x_max_pv",
-    // "l_arm_measurement_y_max_pv",
+    "l_arm_measurement_x_max_pv",
+    "l_arm_measurement_y_max_pv",
   ];
 
   // Retrieve the latest values for the specified keys

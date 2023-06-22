@@ -88,6 +88,29 @@ const ChartComponent = ({ dataplot, categories }) => {
     },
     name: "Minimum", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
   });
+  // เพิ่มเส้น Trace อีก 1 เส้น
+  data.push({
+    x: categories,
+    y: Array(categories.length).fill(45),
+    type: "scatter",
+    mode: "lines",
+    line: {
+      color: "#F57C00", // เปลี่ยนสีตามต้องการ
+    },
+    name: "Ref Max", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
+  });
+
+  // เพิ่มเส้น Trace อีก 1 เส้น
+  data.push({
+    x: categories,
+    y: Array(categories.length).fill(-45),
+    type: "scatter",
+    mode: "lines",
+    line: {
+      color: "#F57C00", // เปลี่ยนสีตามต้องการ
+    },
+    name: "Ref Min", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
+  });
   const layout = {
     title: "Alignment Y",
     xaxis: {

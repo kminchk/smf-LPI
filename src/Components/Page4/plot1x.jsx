@@ -133,8 +133,8 @@ const ChartComponent = ({ dataplot, categories }) => {
     xaxis: {
       tickangle: -45,
       automargin: true,
-      ticktext: dataplot.map((category) => category.roll),
-      tickvals: dataplot.map((_, index) => index),
+      // ticktext: dataplot.map((category) => category.roll),
+      // tickvals: dataplot.map((_, index) => index),
     },
     yaxis: {
       title: "um.",
