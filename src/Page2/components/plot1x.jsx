@@ -48,7 +48,7 @@ const ChartComponent = ({ dataplot, categories }) => {
   const data = Object.entries(latestValues).map(([key, value]) => ({
     x: categories,
     y: dataplot.map((item) => item[key]),
-    type: "scatter",
+    type: "scattergl",
     mode: "lines",
     // line: {
     //   color: key === "after_vac_center_x_pv" ? "#FF0000" : "#0161FF",
@@ -58,7 +58,7 @@ const ChartComponent = ({ dataplot, categories }) => {
   // data.push({
   //   x: categories,
   //   y: dataplot.map((item) => -item.after_vac_center_x_pv), // แทนที่ `another_key` ด้วยชื่อ key ที่ต้องการ
-  //   type: "scatter",
+  //   type: "scattergl",
   //   mode: "lines",
   //   line: {
   //     color: "#FF0000", // เปลี่ยนสีตามต้องการ
@@ -69,7 +69,7 @@ const ChartComponent = ({ dataplot, categories }) => {
   data.push({
     x: categories,
     y: Array(categories.length).fill(35),
-    type: "scatter",
+    type: "scattergl",
     mode: "lines",
     line: {
       color: "#FF0000", // เปลี่ยนสีตามต้องการ
@@ -80,7 +80,7 @@ const ChartComponent = ({ dataplot, categories }) => {
   data.push({
     x: categories,
     y: Array(categories.length).fill(-35),
-    type: "scatter",
+    type: "scattergl",
     mode: "lines",
     line: {
       color: "#FF0000", // เปลี่ยนสีตามต้องการ
@@ -92,7 +92,7 @@ const ChartComponent = ({ dataplot, categories }) => {
   data.push({
     x: categories,
     y: Array(categories.length).fill(45),
-    type: "scatter",
+    type: "scattergl",
     mode: "lines",
     line: {
       color: "#F57C00", // เปลี่ยนสีตามต้องการ
@@ -104,7 +104,7 @@ const ChartComponent = ({ dataplot, categories }) => {
   data.push({
     x: categories,
     y: Array(categories.length).fill(-45),
-    type: "scatter",
+    type: "scattergl",
     mode: "lines",
     line: {
       color: "#F57C00", // เปลี่ยนสีตามต้องการ

@@ -134,7 +134,7 @@ export default function QuantitySelect() {
       <Container maxWidth="xl">
         <Box sx={{ bgcolor: "#ffffff", height: "100vh" }}>
           <Grid container spacing={2}>
-            <Grid item xs={2}>
+            <Grid item xl={2}>
               <Item>
                 <TextField
                   type="number"
@@ -166,12 +166,12 @@ export default function QuantitySelect() {
                 />
               </Item>
             </Grid>
-            <Grid item xs={2} mt={2.5}>
+            <Grid item xl={2} mt={2.5}>
               <Button variant="outlined" onClick={handleExportCSV}>
                 Export CSV
               </Button>
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xl={8}>
               <div style={{ display: "flex", justifyContent: "right" }}>
                 <Chip
                   variant="outlined"
@@ -182,7 +182,7 @@ export default function QuantitySelect() {
             </Grid>
             {data.length > 0 ? (
               <React.Fragment>
-                <Grid item xs={12}>
+                <Grid item xl={12}>
                   <Item>
                     <ChartComponent
                       categories={categories}
@@ -191,7 +191,7 @@ export default function QuantitySelect() {
                     />
                   </Item>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xl={12}>
                   <Item>
                     <ChartComponent3
                       categories={categories}
@@ -201,7 +201,7 @@ export default function QuantitySelect() {
                     />
                   </Item>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xl={12}>
                   <Item>
                     <ChartComponent2
                       categories={categories}
@@ -210,7 +210,7 @@ export default function QuantitySelect() {
                     />
                   </Item>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xl={12}>
                   <Item>
                     <ChartComponent4
                       categories={categories}
@@ -220,7 +220,7 @@ export default function QuantitySelect() {
                     />
                   </Item>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xl={12}>
                   <Item>
                     <ChartComponent5
                       categories={categories}
@@ -231,7 +231,7 @@ export default function QuantitySelect() {
                     />
                   </Item>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xl={12}>
                   <Item>
                     <ChartComponent6
                       categories={categories}
