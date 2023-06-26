@@ -139,7 +139,7 @@ export default function QuantitySelect() {
       <Container maxWidth="xl">
         <Box maxWidth="xl" sx={{ height: 800, width: "100%" }}>
           <Grid container spacing={2}>
-            <Grid item xs={3} md={3}>
+            <Grid item xl={3} md={3}>
               <Item>
                 <Autocomplete
                   options={distinctFactory}
@@ -157,7 +157,7 @@ export default function QuantitySelect() {
                 />
               </Item>
             </Grid>
-            <Grid item xs={3} md={3}>
+            <Grid item xl={3} md={3}>
               <Item>
                 <Autocomplete
                   options={distinctMachine}
@@ -175,7 +175,7 @@ export default function QuantitySelect() {
                 />
               </Item>
             </Grid>
-            <Grid item xs={2} md={2}>
+            <Grid item xl={2} md={2}>
               <Item>
                 <TextField
                   type="number"
@@ -207,12 +207,12 @@ export default function QuantitySelect() {
                 />
               </Item>
             </Grid>
-            <Grid item xs={2} mt={2.5}>
+            <Grid item xl={2} mt={2.5}>
               <Button variant="outlined" onClick={handleExportCSV}>
                 Export CSV
               </Button>
             </Grid>
-            <Grid item xs={1.5}>
+            <Grid item xl={1.5}>
               <div style={{ display: "flex", justifyContent: "right" }}>
                 <Chip
                   variant="outlined"
