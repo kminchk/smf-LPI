@@ -42,7 +42,7 @@ const ChartComponent = ({ dataplot, categories }) => {
   const data = Object.entries(latestValues).map(([key, value]) => ({
     x: categories,
     y: dataplot.map((item) => item[key]),
-    type: "scatter",
+    type: "scattergl",
     mode: "lines",
     line: {
       // color: key === "cycle_time_pv" ? "#FF0000" : "#0161FF",

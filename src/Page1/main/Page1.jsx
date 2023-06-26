@@ -12,12 +12,14 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import axios from "axios";
 import Chip from "@mui/material/Chip";
-import ChartComponent from "../Components/page1/heater_pv_1_pv";
-import ChartComponent2 from "../Components/page1/heater_pv_2_pv";
-import ChartComponent3 from "../Components/page1/Ir1_pv_12_pv";
-import ChartComponent4 from "../Components/page1/Ir2_pv_12_pv";
-import ChartComponent5 from "../Components/page1/heater_pv_3456_pv";
-import ChartComponent6 from "../Components/page1/Ir1_pv_3456_pv";
+import ChartComponent from "../Components/heater_pv_1_pv";
+import ChartComponent2 from "../Components/heater_pv_2_pv";
+import ChartComponent3 from "../Components/Ir1_pv_12_pv";
+import ChartComponent4 from "../Components/Ir2_pv_12_pv";
+import ChartComponent5 from "../Components/heater_pv_3456_pv";
+import ChartComponent6 from "../Components/Ir1_pv_3456_pv";
+import Papa from "papaparse";
+import Button from "@mui/material/Button";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -112,6 +114,20 @@ export default function QuantitySelect() {
     }
   };
 
+  const handleExportCSV = () => {
+    if (data.length > 0) {
+      const csvDay = Papa.unparse(data);
+      const csvdata = new Blob([csvDay], {
+        type: "text/csv;charset=utf-8;",
+      });
+      const csvURLDay = window.URL.createObjectURL(csvdata);
+      const tempLinkDay = document.createElement("a");
+      tempLinkDay.href = csvURLDay;
+      tempLinkDay.setAttribute("download", "data.csv");
+      tempLinkDay.click();
+    }
+  };
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -150,8 +166,12 @@ export default function QuantitySelect() {
                 />
               </Item>
             </Grid>
-
-            <Grid item xs={10}>
+            <Grid item xs={2} mt={2.5}>
+              <Button variant="outlined" onClick={handleExportCSV}>
+                Export CSV
+              </Button>
+            </Grid>
+            <Grid item xs={8}>
               <div style={{ display: "flex", justifyContent: "right" }}>
                 <Chip
                   variant="outlined"

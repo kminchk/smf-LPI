@@ -15,8 +15,12 @@ import { format } from "date-fns";
 import Autocomplete from "@mui/material/Autocomplete";
 import axios from "axios";
 import Chip from "@mui/material/Chip";
-import ChartComponent from "../Components/Page2/plot1x";
-import ChartComponent1 from "../Components/Page2/plot1y";
+import ChartComponent from "../components/plot1x";
+import ChartComponent2 from "../components/plot2";
+import ChartComponent3 from "../components/plot3";
+import ChartComponent4 from "../components/plot4";
+import ChartComponent5 from "../components/plot5";
+import Papa from "papaparse";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -40,70 +44,42 @@ export default function QuantitySelect() {
     setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
   };
 
-  const [selectedFactory, setSelectedFactory] = useState(null);
-  const [distinctFactory, setDistinctFactory] = useState([]);
-  const fetchDistinctFactory = async () => {
+  const [selectedmc_code, setselectedmc_code] = useState(null);
+  const [distinctmc_code, setdistinctmc_code] = useState([]);
+  const fetchdistinctmc_code = async () => {
     try {
       const response = await axios.get(
-        "http://10.17.77.111:3001/api/jwdb_rlse_beac/distinctFactory"
+        "http://10.17.77.111:3001/api/jwdb_rphp_beac_actv/distinctmc_code"
       );
-      const distinctFactory = response.data;
-      setDistinctFactory(distinctFactory);
+      const distinctmc_code = response.data;
+      setdistinctmc_code(distinctmc_code);
     } catch (error) {
       console.error(`Error fetching distinct factories: ${error}`);
     }
   };
-  const handleFactoryChange = (event, newValue) => {
+  const handlemc_codeChange = (event, newValue) => {
     console.log(newValue);
-    setSelectedFactory(newValue);
-    if (newValue === null) {
-      setSelectedMachine(newValue);
-      setDistinctMachine([]);
-    }
-  };
-
-  const [selectedMachine, setSelectedMachine] = useState(null);
-  const [distinctMachine, setDistinctMachine] = useState([]);
-  const fetchDistinctMachine = async () => {
-    try {
-      const response = await axios.get(
-        `http://10.17.77.111:3001/api/jwdb_rlse_beac/distinctMccode?factory=${selectedFactory.factory}`
-      );
-      const distinctMachine = response.data;
-      setDistinctMachine(distinctMachine);
-    } catch (error) {
-      console.error(`Error fetching distinct machines: ${error}`);
-    }
-  };
-  const handleMachineChange = (event, newValue) => {
-    console.log(newValue);
-    setSelectedMachine(newValue);
+    setselectedmc_code(newValue);
   };
 
   useEffect(() => {
-    fetchDistinctFactory();
+    fetchdistinctmc_code();
   }, []);
-
-  useEffect(() => {
-    if (selectedFactory !== null) {
-      fetchDistinctMachine();
-    }
-  }, [selectedFactory]);
 
   const [data, setData] = useState([]);
   const [categories, setCategories] = useState([]);
   useEffect(() => {
-    if ((selectedFactory !== null) & (selectedMachine !== null)) {
+    if (selectedmc_code !== null) {
       fetchDataapi();
-    } else if (selectedFactory === null || selectedMachine === null) {
+    } else if (selectedmc_code === null) {
       setData([]);
     }
-  }, [selectedFactory, selectedMachine, quantity]);
+  }, [selectedmc_code, quantity]);
 
   const fetchDataapi = async () => {
     try {
       const response = await axios.get(
-        `http://10.17.77.111:3001/api/jwdb_rlse_beac/dataplot?factory=${selectedFactory.factory}&mc_code=${selectedMachine.mc_code}&hours=${quantity}`
+        `http://10.17.77.111:3001/api/jwdb_rphp_beac_actv/data-plot?mc_code=${selectedmc_code.mc_code}&hours=${quantity}`
       );
       const dataapi = response.data;
       setData(dataapi);
@@ -114,9 +90,24 @@ export default function QuantitySelect() {
       });
       setCategories(categories); // ตั้งค่า categories ที่นี่
     } catch (error) {
-      console.error(`Error fetching distinct machines: ${error}`);
+      console.error(`Error fetching distinct mc_codes: ${error}`);
     }
   };
+
+  const handleExportCSV = () => {
+    if (data.length > 0) {
+      const csvDay = Papa.unparse(data);
+      const csvdata = new Blob([csvDay], {
+        type: "text/csv;charset=utf-8;",
+      });
+      const csvURLDay = window.URL.createObjectURL(csvdata);
+      const tempLinkDay = document.createElement("a");
+      tempLinkDay.href = csvURLDay;
+      tempLinkDay.setAttribute("download", "data.csv");
+      tempLinkDay.click();
+    }
+  };
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -126,39 +117,22 @@ export default function QuantitySelect() {
             <Grid item xs={3} md={3}>
               <Item>
                 <Autocomplete
-                  options={distinctFactory}
-                  getOptionLabel={(option) => option && option.factory}
-                  value={selectedFactory}
-                  onChange={handleFactoryChange}
-                  sx={{ width: "100%" }}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="เลือก Factory"
-                      variant="outlined"
-                    />
-                  )}
-                />
-              </Item>
-            </Grid>
-            <Grid item xs={3} md={3}>
-              <Item>
-                <Autocomplete
-                  options={distinctMachine}
+                  options={distinctmc_code}
                   getOptionLabel={(option) => option && option.mc_code}
-                  value={selectedMachine}
-                  onChange={handleMachineChange}
+                  value={selectedmc_code}
+                  onChange={handlemc_codeChange}
                   sx={{ width: "100%" }}
                   renderInput={(params) => (
                     <TextField
                       {...params}
-                      label="เลือก Machine"
+                      label="เลือก mc_code"
                       variant="outlined"
                     />
                   )}
                 />
               </Item>
             </Grid>
+
             <Grid item xs={3} md={3}>
               <Item>
                 <TextField
@@ -191,7 +165,12 @@ export default function QuantitySelect() {
                 />
               </Item>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2} mt={2.5}>
+              <Button variant="outlined" onClick={handleExportCSV}>
+                Export CSV
+              </Button>
+            </Grid>
+            <Grid item xs={4}>
               <div style={{ display: "flex", justifyContent: "right" }}>
                 <Chip
                   variant="outlined"
@@ -206,6 +185,12 @@ export default function QuantitySelect() {
                   <Box maxWidth="xl" sx={{ height: 800, width: "100%" }}>
                     <Grid container spacing={2}>
                       <Grid item xl={12} mt={2}>
+                        <ChartComponent4
+                          dataplot={data}
+                          categories={categories}
+                        />
+                      </Grid>
+                      <Grid item xl={12} mt={2}>
                         <Item>
                           <ChartComponent
                             dataplot={data}
@@ -215,7 +200,31 @@ export default function QuantitySelect() {
                       </Grid>
                       <Grid item xl={12} mt={2}>
                         <Item>
-                          <ChartComponent1
+                          <ChartComponent2
+                            dataplot={data}
+                            categories={categories}
+                          />
+                        </Item>
+                      </Grid>
+                      <Grid item xl={12} mt={2}>
+                        <Item>
+                          <ChartComponent3
+                            dataplot={data}
+                            categories={categories}
+                          />
+                        </Item>
+                      </Grid>
+                      {/* <Grid item xl={12} mt={2}>
+                        <Item>
+                          <ChartComponent4
+                            dataplot={data}
+                            categories={categories}
+                          />
+                        </Item>
+                      </Grid> */}
+                      <Grid item xl={12} mt={2}>
+                        <Item>
+                          <ChartComponent5
                             dataplot={data}
                             categories={categories}
                           />

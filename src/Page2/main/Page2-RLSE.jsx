@@ -15,7 +15,9 @@ import { format } from "date-fns";
 import Autocomplete from "@mui/material/Autocomplete";
 import axios from "axios";
 import Chip from "@mui/material/Chip";
-import ChartComponent from "../Components/Page3/plot1x";
+import ChartComponent from "../components/plot1x";
+import ChartComponent1 from "../components/plot1y";
+import Papa from "papaparse";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -116,6 +118,21 @@ export default function QuantitySelect() {
       console.error(`Error fetching distinct machines: ${error}`);
     }
   };
+
+  const handleExportCSV = () => {
+    if (data.length > 0) {
+      const csvDay = Papa.unparse(data);
+      const csvdata = new Blob([csvDay], {
+        type: "text/csv;charset=utf-8;",
+      });
+      const csvURLDay = window.URL.createObjectURL(csvdata);
+      const tempLinkDay = document.createElement("a");
+      tempLinkDay.href = csvURLDay;
+      tempLinkDay.setAttribute("download", "data.csv");
+      tempLinkDay.click();
+    }
+  };
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -158,7 +175,7 @@ export default function QuantitySelect() {
                 />
               </Item>
             </Grid>
-            <Grid item xs={3} md={3}>
+            <Grid item xs={2} md={2}>
               <Item>
                 <TextField
                   type="number"
@@ -190,7 +207,12 @@ export default function QuantitySelect() {
                 />
               </Item>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2} mt={2.5}>
+              <Button variant="outlined" onClick={handleExportCSV}>
+                Export CSV
+              </Button>
+            </Grid>
+            <Grid item xs={1.5}>
               <div style={{ display: "flex", justifyContent: "right" }}>
                 <Chip
                   variant="outlined"
@@ -207,6 +229,14 @@ export default function QuantitySelect() {
                       <Grid item xl={12} mt={2}>
                         <Item>
                           <ChartComponent
+                            dataplot={data}
+                            categories={categories}
+                          />
+                        </Item>
+                      </Grid>
+                      <Grid item xl={12} mt={2}>
+                        <Item>
+                          <ChartComponent1
                             dataplot={data}
                             categories={categories}
                           />
