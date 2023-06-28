@@ -11,8 +11,14 @@ const ChartComponent = ({ dataplot, categories }) => {
     "after_vac_pos_2x_pv",
     "after_vac_pos_3x_pv",
     "after_vac_pos_4x_pv",
+    // "algnlim_cmrpitc_x_sv",
+    // "algnlim_cmrpitc_y_sv",
   ];
-
+  const keys2 = [
+    //"after_vac_center_x_pv",
+    "algnlim_cmrpitc_x_sv",
+    "algnlim_cmrpitc_y_sv",
+  ];
   // Retrieve the latest values for the specified keys
   const latestValues = keys.reduce((result, key) => {
     result[key] = dataplot[dataplot.length - 1][key];
@@ -48,51 +54,41 @@ const ChartComponent = ({ dataplot, categories }) => {
   const data = Object.entries(latestValues).map(([key, value]) => ({
     x: categories,
     y: dataplot.map((item) => item[key]),
-    type: "scattergl",
-    mode: "lines",
+    type: "scatterglglgl",
+    mode: "lines+markers",
     // line: {
     //   color: key === "after_vac_center_x_pv" ? "#FF0000" : "#0161FF",
     // },
     name: key,
   }));
-  // data.push({
-  //   x: categories,
-  //   y: dataplot.map((item) => -item.after_vac_center_x_pv), // แทนที่ `another_key` ด้วยชื่อ key ที่ต้องการ
-  //   type: "scattergl",
-  //   mode: "lines",
-  //   line: {
-  //     color: "#FF0000", // เปลี่ยนสีตามต้องการ
-  //   },
-  //   name: "after_vac_center_x_pv", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
-  // });
-  // เพิ่มเส้น Trace อีก 1 เส้น
+
   data.push({
     x: categories,
-    y: Array(categories.length).fill(35),
-    type: "scattergl",
+    y: dataplot.map((item) => item.algnlim_cmrpitc_x_sv), // แทนที่ `another_key` ด้วยชื่อ key ที่ต้องการ
+    type: "scatterglglgl",
     mode: "lines",
     line: {
       color: "#FF0000", // เปลี่ยนสีตามต้องการ
     },
-    name: "Maximum", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
+    name: "(+)algnlim_cmrpitc_x_sv", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
   });
-  // เพิ่มเส้น Trace อีก 1 เส้น
   data.push({
     x: categories,
-    y: Array(categories.length).fill(-35),
-    type: "scattergl",
+    y: dataplot.map((item) => -item.algnlim_cmrpitc_x_sv), // แทนที่ `another_key` ด้วยชื่อ key ที่ต้องการ
+    type: "scatterglglgl",
     mode: "lines",
     line: {
       color: "#FF0000", // เปลี่ยนสีตามต้องการ
     },
-    name: "Minimum", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
+    name: "(-)algnlim_cmrpitc_x_sv", // แทนที่ "Another Trace" ด้วยชื่อที่ต้องการ
   });
+  // เพิ่มเส้น Trace อีก 1 เส้น
 
   // เพิ่มเส้น Trace อีก 1 เส้น
   data.push({
     x: categories,
     y: Array(categories.length).fill(45),
-    type: "scattergl",
+    type: "scatterglglgl",
     mode: "lines",
     line: {
       color: "#F57C00", // เปลี่ยนสีตามต้องการ
@@ -104,7 +100,7 @@ const ChartComponent = ({ dataplot, categories }) => {
   data.push({
     x: categories,
     y: Array(categories.length).fill(-45),
-    type: "scattergl",
+    type: "scatterglglgl",
     mode: "lines",
     line: {
       color: "#F57C00", // เปลี่ยนสีตามต้องการ

@@ -14,7 +14,7 @@ const ChartComponent = ({ categories, heaterPv, title }) => {
     {
       x: categories,
       y: heaterPv,
-      type: "scatter",
+      type: "scattergl",
       mode: "lines",
       line: {
         color: "#0161FF", // สีของเส้นหลัก
@@ -24,7 +24,7 @@ const ChartComponent = ({ categories, heaterPv, title }) => {
     {
       x: categories,
       y: Array(categories.length).fill(195),
-      type: "scatter",
+      type: "scattergl",
       mode: "lines",
       name: "LSL",
       line: {
@@ -34,7 +34,7 @@ const ChartComponent = ({ categories, heaterPv, title }) => {
     {
       x: categories,
       y: Array(categories.length).fill(215),
-      type: "scatter",
+      type: "scattergl",
       mode: "lines",
       name: "USL",
       line: {

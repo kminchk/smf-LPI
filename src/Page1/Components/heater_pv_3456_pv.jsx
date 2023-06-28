@@ -30,7 +30,7 @@ const ChartComponent = ({
     {
       x: categories,
       y: heaterPv1,
-      type: "scatter",
+      type: "scattergl",
       mode: "lines",
       line: {
         color: "#0161FF", // สีของเส้นหลัก
@@ -40,7 +40,7 @@ const ChartComponent = ({
     {
       x: categories,
       y: heaterPv2,
-      type: "scatter",
+      type: "scattergl",
       mode: "lines",
       line: {
         color: "#0161FF", // สีของเส้นหลัก
@@ -50,7 +50,7 @@ const ChartComponent = ({
     {
       x: categories,
       y: heaterPv3,
-      type: "scatter",
+      type: "scattergl",
       mode: "lines",
       line: {
         color: "#0161FF", // สีของเส้นหลัก
@@ -60,7 +60,7 @@ const ChartComponent = ({
     {
       x: categories,
       y: heaterPv4,
-      type: "scatter",
+      type: "scattergl",
       mode: "lines",
       line: {
         color: "#0161FF", // สีของเส้นหลัก
@@ -70,7 +70,7 @@ const ChartComponent = ({
     {
       x: categories,
       y: Array(categories.length).fill(176),
-      type: "scatter",
+      type: "scattergl",
       mode: "lines",
       name: "LSL",
       line: {
@@ -80,7 +80,7 @@ const ChartComponent = ({
     {
       x: categories,
       y: Array(categories.length).fill(196),
-      type: "scatter",
+      type: "scattergl",
       mode: "lines",
       name: "USL",
       line: {

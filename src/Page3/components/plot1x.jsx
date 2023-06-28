@@ -43,7 +43,7 @@ const ChartComponent = ({ dataplot, categories }) => {
     x: categories,
     y: dataplot.map((item) => item[key]),
     type: "scattergl",
-    mode: "lines",
+    mode: "lines+markers",
     line: {
       // color: key === "cycle_time_pv" ? "#FF0000" : "#0161FF",
     },

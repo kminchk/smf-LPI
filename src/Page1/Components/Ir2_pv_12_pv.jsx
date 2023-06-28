@@ -18,7 +18,7 @@ const ChartComponent = ({ ir2_pv_1_pv, ir2_pv_2_pv, title, categories }) => {
     {
       x: categories,
       y: ir2_pv_1_pv,
-      type: "scatter",
+      type: "scattergl",
       mode: "lines",
       line: {
         color: "#0161FF", // สีของเส้นหลัก
@@ -28,7 +28,7 @@ const ChartComponent = ({ ir2_pv_1_pv, ir2_pv_2_pv, title, categories }) => {
     {
       x: categories,
       y: ir2_pv_2_pv,
-      type: "scatter",
+      type: "scattergl",
       mode: "lines",
       line: {
         color: "#0161FF", // สีของเส้นหลัก
@@ -38,7 +38,7 @@ const ChartComponent = ({ ir2_pv_1_pv, ir2_pv_2_pv, title, categories }) => {
     {
       x: categories,
       y: Array(categories.length).fill(179),
-      type: "scatter",
+      type: "scattergl",
       mode: "lines",
       name: "LSL",
       line: {
@@ -48,7 +48,7 @@ const ChartComponent = ({ ir2_pv_1_pv, ir2_pv_2_pv, title, categories }) => {
     {
       x: categories,
       y: Array(categories.length).fill(219),
-      type: "scatter",
+      type: "scattergl",
       mode: "lines",
       name: "USL",
       line: {
