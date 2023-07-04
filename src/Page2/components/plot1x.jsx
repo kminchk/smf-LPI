@@ -55,7 +55,7 @@ const ChartComponent = ({ dataplot, categories }) => {
     x: categories,
     y: dataplot.map((item) => item[key]),
     type: "scattergl",
-    mode: "lines+markers",
+    mode: "lines",
     // line: {
     //   color: key === "after_vac_center_x_pv" ? "#FF0000" : "#0161FF",
     // },
