@@ -24,6 +24,7 @@ import Page1 from "./Page1/main/Page1"; // นำเข้าคอมโพเ�
 import Page2 from "./Page2/main/Page2-RLSE"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
 import Page3 from "./Page3/main/Page3-RLSE-Cycle-Time"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
 import Page4 from "./Page4/main/Page4-LRPHP"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
+import Page5 from "./Page5/main/Page5"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
 
 const drawerWidth = 240; // กำหนดค่าความกว้างของ Drawer เป็น 240
 
@@ -177,6 +178,7 @@ export default function MiniDrawer() {
               "RLSE-Alingment",
               "RLSE-Cycle-Time",
               "LRPHP#",
+              "LES-DI-AF-Focus",
             ].map((text, index) => (
               <ListItem key={text} disablePadding sx={{ display: "block" }}>
                 <ListItemButton
@@ -216,6 +218,7 @@ export default function MiniDrawer() {
             <Route path="/page/rlse-alingment" element={<Page2 />} />
             <Route path="/page/rlse-cycle-time" element={<Page3 />} />
             <Route path="/page/LRPHP" element={<Page4 />} />
+            <Route path="/page/les-di-af-focus" element={<Page5 />} />
           </Routes>
         </Box>
       </Box>
