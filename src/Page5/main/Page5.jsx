@@ -159,7 +159,7 @@ export default function QuantitySelect() {
                 />
               </Item>
             </Grid>
-            <Grid item xl={2} md={2}>
+            <Grid item xl={3} md={3}>
               <Item>
                 <Autocomplete
                   options={distinctdata_file}
