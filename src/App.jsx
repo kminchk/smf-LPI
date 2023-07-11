@@ -121,6 +121,7 @@ const Drawer = styled(MuiDrawer, {
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
+  const [selectedTab, setSelectedTab] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -148,7 +149,21 @@ export default function MiniDrawer() {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap component="div">
-              LPI
+              {open
+                ? selectedTab
+                : selectedTab === "RLSB-R2-36-62"
+                ? "RLSB-R2-36-62"
+                : selectedTab === "RLSE-Alingment"
+                ? "RLSE-Alingment"
+                : selectedTab === "RLSE-Cycle-Time"
+                ? "RLSE-Cycle-Time"
+                : selectedTab === "LRPHP#"
+                ? "LRPHP#"
+                : selectedTab === "LES-DI-AF-Focus"
+                ? "LES-DI-AF-Focus"
+                : selectedTab === false
+                ? "LPI"
+                : "LPI"}
             </Typography>
           </Toolbar>
         </AppBar>
@@ -188,7 +203,8 @@ export default function MiniDrawer() {
                     px: 2.5,
                   }}
                   component={Link}
-                  to={`/page/${text.toLowerCase()}`} // เชื่อมโยงเส้นทางไปยัง `/page/:id` โดยใช้พารามิเตอร์จาก `text`
+                  to={`/page/${text.toLowerCase()}`}
+                  onClick={() => setSelectedTab(text)} // เชื่อมโยงเส้นทางไปยัง `/page/:id` โดยใช้พารามิเตอร์จาก `text` // เชื่อมโยงเส้นทางไปยัง `/page/:id` โดยใช้พารามิเตอร์จาก `text`
                 >
                   <ListItemIcon
                     sx={{
