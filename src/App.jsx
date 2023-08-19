@@ -25,6 +25,7 @@ import Page2 from "./Page2/main/Page2-RLSE"; // นำเข้าคอมโ�
 import Page3 from "./Page3/main/Page3-RLSE-Cycle-Time"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
 import Page4 from "./Page4/main/Page4-LRPHP"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
 import Page5 from "./Page5/main/Page5"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
+import Page6 from "./Page6/main/Page6"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
 
 const drawerWidth = 240; // กำหนดค่าความกว้างของ Drawer เป็น 240
 
@@ -194,6 +195,7 @@ export default function MiniDrawer() {
               "RLSE-Cycle-Time",
               "LRPHP#",
               "LES-DI-AF-Focus",
+              "LES-No EXP",
             ].map((text, index) => (
               <ListItem key={text} disablePadding sx={{ display: "block" }}>
                 <ListItemButton
@@ -203,7 +205,7 @@ export default function MiniDrawer() {
                     px: 2.5,
                   }}
                   component={Link}
-                  to={`/page/${text.toLowerCase()}`}
+                  to={`/page/${text.toLowerCase().replace(/ /g, "-")}`}
                   onClick={() => setSelectedTab(text)} // เชื่อมโยงเส้นทางไปยัง `/page/:id` โดยใช้พารามิเตอร์จาก `text` // เชื่อมโยงเส้นทางไปยัง `/page/:id` โดยใช้พารามิเตอร์จาก `text`
                 >
                   <ListItemIcon
@@ -235,6 +237,7 @@ export default function MiniDrawer() {
             <Route path="/page/rlse-cycle-time" element={<Page3 />} />
             <Route path="/page/LRPHP" element={<Page4 />} />
             <Route path="/page/les-di-af-focus" element={<Page5 />} />
+            <Route path="/page/les-no-exp" element={<Page6 />} />
           </Routes>
         </Box>
       </Box>
