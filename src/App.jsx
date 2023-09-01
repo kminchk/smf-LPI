@@ -26,6 +26,7 @@ import Page3 from "./Page3/main/Page3-RLSE-Cycle-Time"; // นำเข้าค
 import Page4 from "./Page4/main/Page4-LRPHP"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
 import Page5 from "./Page5/main/Page5"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
 import Page6 from "./Page6/main/Page6"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
+import ScreenTension from "./Pages/Page-Screen-tension/main/Page-Screen-tension"; // นำเข้าคอมโพเนนต์ Screen Tension จากไฟล์ "Page-Screen-Tension.js" ในโฟลเดอร์เดียวกัน
 
 const drawerWidth = 240; // กำหนดค่าความกว้างของ Drawer เป็น 240
 
@@ -162,6 +163,8 @@ export default function MiniDrawer() {
                 ? "LRPHP#"
                 : selectedTab === "LES-DI-AF-Focus"
                 ? "LES-DI-AF-Focus"
+                : selectedTab === "Screen Tension"
+                ? "Screen Tension"
                 : selectedTab === false
                 ? "LPI"
                 : "LPI"}
@@ -196,6 +199,7 @@ export default function MiniDrawer() {
               "LRPHP#",
               "LES-DI-AF-Focus",
               "LES-No EXP",
+              "Screen Tension",
             ].map((text, index) => (
               <ListItem key={text} disablePadding sx={{ display: "block" }}>
                 <ListItemButton
@@ -238,6 +242,7 @@ export default function MiniDrawer() {
             <Route path="/page/LRPHP" element={<Page4 />} />
             <Route path="/page/les-di-af-focus" element={<Page5 />} />
             <Route path="/page/les-no-exp" element={<Page6 />} />
+            <Route path="/page/screen-tension" element={<ScreenTension />} />
           </Routes>
         </Box>
       </Box>
