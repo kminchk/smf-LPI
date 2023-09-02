@@ -203,7 +203,7 @@ const ScreenTension = () => {
               {/* <Grid item xl={12}>
               <DrawerHeader />
               </Grid> */}
-              <Grid item xl={12}>
+              <Grid item xl={7}>
                 <FormControl
                   fullWidth
                   style={{
@@ -214,49 +214,54 @@ const ScreenTension = () => {
                   }}
                 >
                   {/* <InputLabel id="product-label">Product</InputLabel> */}
-
-                  <Autocomplete
-                    options={distinctproduct_name}
-                    getOptionLabel={(option) => option && option.product_name}
-                    value={selectproduct_name}
-                    onChange={handleProductChange}
-                    sx={{ width: "100%" }}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="product-select :"
-                        variant="outlined"
-                      />
-                    )}
-                  />
-                  <Autocomplete
-                    options={distinctprocess}
-                    getOptionLabel={(option) => option && option.process}
-                    value={selectprocess}
-                    onChange={handleProcessChange}
-                    sx={{ width: "100%" }}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="process :"
-                        variant="outlined"
-                      />
-                    )}
-                  />
-                  <Autocomplete
-                    options={distinctscreen_no}
-                    getOptionLabel={(option) => option && option.screen_no}
-                    value={selectscreen_no}
-                    onChange={handlescreen_noChange}
-                    sx={{ width: "100%" }}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="screen_no :"
-                        variant="outlined"
-                      />
-                    )}
-                  />
+                  <Item>
+                    <Autocomplete
+                      options={distinctproduct_name}
+                      getOptionLabel={(option) => option && option.product_name}
+                      value={selectproduct_name}
+                      onChange={handleProductChange}
+                      sx={{ width: "100%" }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          label="product-select :"
+                          variant="outlined"
+                        />
+                      )}
+                    />
+                  </Item>
+                  <Item>
+                    <Autocomplete
+                      options={distinctprocess}
+                      getOptionLabel={(option) => option && option.process}
+                      value={selectprocess}
+                      onChange={handleProcessChange}
+                      sx={{ width: "100%" }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          label="process :"
+                          variant="outlined"
+                        />
+                      )}
+                    />
+                  </Item>
+                  <Item>
+                    <Autocomplete
+                      options={distinctscreen_no}
+                      getOptionLabel={(option) => option && option.screen_no}
+                      value={selectscreen_no}
+                      onChange={handlescreen_noChange}
+                      sx={{ width: "100%" }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          label="screen_no :"
+                          variant="outlined"
+                        />
+                      )}
+                    />
+                  </Item>
                 </FormControl>
               </Grid>
               <Grid item xl={12}>
