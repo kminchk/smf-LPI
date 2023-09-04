@@ -1,9 +1,7 @@
-import Plot from "react-plotly.js";
 import React, { useState, useEffect } from "react";
-import {
-  formatdatewithtime,
-  formatdateforboxplot,
-} from "../../../utils/formatdate"; // Import formatDate function from utilss
+import Plot from "react-plotly.js";
+import { formatdateforboxplot } from "../../../utils/formatdate"; // Import formatDate function from utils
+
 function BoxPlotExample({ datas }) {
   const [X1_data, setX1_data] = useState([]);
   const [Y1_data, setY1_data] = useState([]);
@@ -15,6 +13,8 @@ function BoxPlotExample({ datas }) {
   const [Y4_data, setY4_data] = useState([]);
   const [X5_data, setX5_data] = useState([]);
   const [Y5_data, setY5_data] = useState([]);
+  const [spec_max, setspec_max] = useState([]);
+  const [spec_min, setspec_min] = useState([]);
 
   const [DateData, setDateData] = useState([]);
 
@@ -33,9 +33,10 @@ function BoxPlotExample({ datas }) {
 
     const x_5Data = datas.map((item) => item.x5);
     const y_5Data = datas.map((item) => item.y5);
-
+    const spec_Max = datas.map((item) => item.spec_max);
+    const spec_Min = datas.map((item) => item.spec_min);
     const dateData = datas.map((item) => {
-      // แปลงข้อมูล date_time เป็นรูปแบบที่ถูกต้องสำหรับแกน x
+      // Convert date_time data to the appropriate format for the x-axis
       const date = formatdateforboxplot(item.date_time);
       return date;
     });
@@ -54,110 +55,120 @@ function BoxPlotExample({ datas }) {
 
     setX5_data(x_5Data);
     setY5_data(y_5Data);
-
+    setspec_max(spec_Max);
+    setspec_min(spec_Min);
     setDateData(dateData);
-    console.log(x_1Data);
   }, [datas]);
 
-  const data = [
+  const scatterglData = [
     {
-      type: "box",
-      y: X1_data,
+      type: "scattergl",
+      mode: "markers",
       x: DateData,
-      boxpoints: "all",
-      jitter: 0.3,
-      pointpos: -1.8,
+      y: X1_data,
       name: "x1",
+      marker: { color: "blue" },
     },
     {
-      type: "box",
-      y: X1_data,
+      type: "scattergl",
+      mode: "markers",
       x: DateData,
-      boxpoints: "all",
-      jitter: 0.3,
-      pointpos: -1.8,
+      y: Y1_data,
       name: "y1",
+      marker: { color: "orange" },
     },
-
     {
-      type: "box",
+      type: "scattergl",
+      mode: "markers",
+      x: DateData,
       y: X2_data,
-      x: DateData,
-      boxpoints: "all",
-      jitter: 0.3,
-      pointpos: -1.8,
       name: "x2",
+      marker: { color: "blue" },
     },
     {
-      type: "box",
+      type: "scattergl",
+      mode: "markers",
+      x: DateData,
       y: Y2_data,
-      x: DateData,
-      boxpoints: "all",
-      jitter: 0.3,
-      pointpos: -1.8,
       name: "y2",
+      marker: { color: "orange" },
     },
-
     {
-      type: "box",
+      type: "scattergl",
+      mode: "markers",
+      x: DateData,
       y: X3_data,
-      x: DateData,
-      boxpoints: "all",
-      jitter: 0.3,
-      pointpos: -1.8,
       name: "x3",
+      marker: { color: "blue" },
     },
     {
-      type: "box",
+      type: "scattergl",
+      mode: "markers",
+      x: DateData,
       y: Y3_data,
-      x: DateData,
-      boxpoints: "all",
-      jitter: 0.3,
-      pointpos: -1.8,
       name: "y3",
+      marker: { color: "orange" },
     },
-
     {
-      type: "box",
+      type: "scattergl",
+      mode: "markers",
+      x: DateData,
       y: X4_data,
-      x: DateData,
-      boxpoints: "all",
-      jitter: 0.3,
-      pointpos: -1.8,
       name: "x4",
+      marker: { color: "blue" },
     },
     {
-      type: "box",
+      type: "scattergl",
+      mode: "markers",
+      x: DateData,
       y: Y4_data,
-      x: DateData,
-      boxpoints: "all",
-      jitter: 0.3,
-      pointpos: -1.8,
       name: "y4",
+      marker: { color: "orange" },
     },
-
     {
-      type: "box",
+      type: "scattergl",
+      mode: "markers",
+      x: DateData,
       y: X5_data,
-      x: DateData,
-      boxpoints: "all",
-      jitter: 0.3,
-      pointpos: -1.8,
       name: "x5",
+      marker: { color: "blue" },
     },
     {
-      type: "box",
-      y: Y5_data,
+      type: "scattergl",
+      mode: "markers",
       x: DateData,
-      boxpoints: "all",
-      jitter: 0.3,
-      pointpos: -1.8,
+      y: Y5_data,
       name: "y5",
+      marker: { color: "orange" },
     },
+    {
+      type: "scattergl",
+      mode: "lines",
+      x: DateData,
+      y: spec_max,
+      name: "spec_max",
+      marker: { color: "red" },
+    },
+    {
+      type: "scattergl",
+      mode: "lines",
+      x: DateData,
+      y: spec_min,
+      name: "spec_min",
+      marker: { color: "red" },
+    },
+    // {
+    //   type: "scattergl",
+    //   mode: "lines",
+    //   x: DateData,
+    //   y: Array(DateData.length).fill(10), // Create an array with 125 for the target line
+    //   name: "Target",
+    //   line: { color: "red" }, // Set the line color for the target
+    // },
   ];
 
   const layout = {
-    title: "Screen Tension",
+    title: "Screen Tension (scattergl Plot)",
     yaxis: {
       title: "Value",
     },
@@ -172,7 +183,7 @@ function BoxPlotExample({ datas }) {
 
   return (
     <div>
-      <Plot data={data} layout={layout} />
+      <Plot data={scatterglData} layout={layout} />
     </div>
   );
 }

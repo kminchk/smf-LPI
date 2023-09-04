@@ -52,8 +52,12 @@ const ScreenTension = () => {
       setSelectproduct_name({
         product_name: "ALL",
       });
-      setSelectedProcess("ALL");
-      setSelectedScreen("ALL");
+      setSelectprocess({
+        process: "ALL",
+      });
+      setSelectscreen_no({
+        screen_no: "ALL",
+      });
     } else {
       setSelectproduct_name(newValue);
     }
@@ -64,8 +68,14 @@ const ScreenTension = () => {
       setSelectprocess({
         process: "ALL",
       });
+      setSelectscreen_no({
+        screen_no: "ALL",
+      });
     } else {
       setSelectprocess(newValue);
+      setSelectscreen_no({
+        screen_no: "ALL",
+      });
     }
   };
   const handlescreen_noChange = (event, newValue) => {
@@ -188,6 +198,7 @@ const ScreenTension = () => {
       console.log(fetchDataAPItable);
     } catch (error) {
       console.error(`Error fetching distinct factories: ${error}`);
+      setDataAPI([]);
     }
   };
 
@@ -267,20 +278,30 @@ const ScreenTension = () => {
               <Grid item xl={12}>
                 <p>LPI Screen Tension</p>
               </Grid>
-              <Item>
-                <Grid item xl={12}>
-                  {DataAPI && DataAPI.length > 0 ? (
+
+              <Grid item xl={12}>
+                {DataAPI &&
+                DataAPI.length > 0 &&
+                selectproduct_name.product_name !== "ALL" ? (
+                  <Item>
                     <BoxPlotsData datas={DataAPI} />
-                  ) : (
-                    <p>No data to display.</p>
-                  )}
-                </Grid>
-              </Item>
+                  </Item>
+                ) : (
+                  <Grid item xl={12}>
+                    <Item>
+                      <p>No data to display.</p>
+                    </Item>
+                  </Grid>
+                )}
+              </Grid>
+
               <Grid item xl={12}>
                 {DataAPI && DataAPI.length > 0 ? (
                   <DataTable datas={DataAPI} />
                 ) : (
-                  <p>No data to display.</p>
+                  <Grid item xl={12}>
+                    <p>No data to display.</p>
+                  </Grid>
                 )}
               </Grid>
             </Grid>
