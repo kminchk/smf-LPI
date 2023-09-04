@@ -1,10 +1,24 @@
 import React, { useState, useEffect } from "react";
 // import "./CSS/TableData.css";
-
+import {
+  formatdatewithtime,
+  formatdateforboxplot,
+} from "../../../utils/formatdate"; // Import formatDate function from utils
 import { DataGrid } from "@mui/x-data-grid";
+import Typography from "@mui/material/Typography";
 
 const columns = [
-  { field: "date_time", headerName: "Date Time", width: 160, align: "center" },
+  {
+    field: "date_time",
+    headerName: "Date Time",
+    width: 160,
+    align: "center",
+    renderCell: (params) => (
+      <Typography variant="h7">
+        {formatdatewithtime(params.row.date_time)}
+      </Typography>
+    ),
+  },
   { field: "product_name", headerName: "Product Name", width: 220 },
   { field: "screen_type", headerName: "Type", width: 100 },
   { field: "process", headerName: "Process", width: 100 },

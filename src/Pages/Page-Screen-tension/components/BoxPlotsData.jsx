@@ -1,6 +1,9 @@
 import Plot from "react-plotly.js";
 import React, { useState, useEffect } from "react";
-
+import {
+  formatdatewithtime,
+  formatdateforboxplot,
+} from "../../../utils/formatdate"; // Import formatDate function from utilss
 function BoxPlotExample({ datas }) {
   const [X1_data, setX1_data] = useState([]);
   const [Y1_data, setY1_data] = useState([]);
@@ -33,8 +36,8 @@ function BoxPlotExample({ datas }) {
 
     const dateData = datas.map((item) => {
       // แปลงข้อมูล date_time เป็นรูปแบบที่ถูกต้องสำหรับแกน x
-      const date = new Date(item.date_time);
-      return date.toLocaleDateString() + " " + date.toLocaleTimeString();
+      const date = formatdateforboxplot(item.date_time);
+      return date;
     });
 
     setX1_data(x_1Data);
