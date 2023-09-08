@@ -20,7 +20,7 @@ import ChartComponent5 from "../Components/heater_pv_3456_pv";
 import ChartComponent6 from "../Components/Ir1_pv_3456_pv";
 import Papa from "papaparse";
 import Button from "@mui/material/Button";
-
+import Loadingpage from "../../../Pages/Page-Loading/LoadingPage";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -70,7 +70,7 @@ export default function QuantitySelect() {
         `http://10.17.77.111:3001/jwdb_r23662_actv/data?hours=${quantity}`
       );
       const data = response.data;
-      setData(data);
+
       console.log(data);
       const heater_pv_1_pv = data.map((item) => item.heater_pv_1_pv);
       const ir1_pv_1_pv = data.map((item) => item.ir1_pv_1_pv);
@@ -109,8 +109,10 @@ export default function QuantitySelect() {
       setir1_pv_4_pv(ir1_pv_4_pv);
       setir1_pv_5_pv(ir1_pv_5_pv);
       setir1_pv_6_pv(ir1_pv_6_pv);
+      setData(data);
     } catch (error) {
       console.error(`Error fetching data: ${error}`);
+      setData([]);
     }
   };
 
@@ -248,7 +250,7 @@ export default function QuantitySelect() {
                 <Box maxWidth="xl" sx={{ height: 800, width: "100%" }}>
                   <Grid container spacing={2}>
                     <Grid item xl={12} mt={2}>
-                      <Item>... Wait Data API ...</Item>
+                      <Loadingpage />
                     </Grid>
                   </Grid>
                 </Box>

@@ -20,13 +20,13 @@ import ListItemText from "@mui/material/ListItemText";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"; // นำเข้าคอมโพเนนต์สำหรับการจัดการเส้นทางในแ
 import Fuji from "../public/Fuji.png"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
 import StackedLineChartIcon from "@mui/icons-material/StackedLineChart";
-import Page1 from "./Page1/main/Page1"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
-import Page2 from "./Page2/main/Page2-RLSE"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
-import Page3 from "./Page3/main/Page3-RLSE-Cycle-Time"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
-import Page4 from "./Page4/main/Page4-LRPHP"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
-import Page5 from "./Page5/main/Page5"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
-import Page6 from "./Page6/main/Page6"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
-import ScreenTension from "./Pages/Page-Screen-tension/main/Page-Screen-tension"; // นำเข้าคอมโพเนนต์ Screen Tension จากไฟล์ "Page-Screen-Tension.js" ในโฟลเดอร์เดียวกัน
+import Pagerlsb_r2_36_62 from "./Pages/Page-rlsb-r2-36-62/main/Page-rlsb-r2-36-62"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
+import Page_rlse_alingment from "./Pages/Page-rlse-alingment/main/Page2-RLSE"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
+import Page_rlse_cycle_time from "./Pages/Page-rlse-cycle-time/main/Page3-RLSE-Cycle-Time"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
+import Page_lrphp from "./Pages/Page-lrphp/main/Page4-LRPHP"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
+import Page_les_di_af_focus from "./Pages/Page-les-di-af-focus/main/Page-les-di-af-focus"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
+import Page_les_no_exp from "./Pages/Page-les-no-exp/main/Page-les-no-exp"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
+import PageScreenTension from "./Pages/Page-Screen-tension/main/Page-Screen-tension"; // นำเข้าคอมโพเนนต์ Screen Tension จากไฟล์ "Page-Screen-Tension.js" ในโฟลเดอร์เดียวกัน
 
 const drawerWidth = 240; // กำหนดค่าความกว้างของ Drawer เป็น 240
 
@@ -235,14 +235,26 @@ export default function MiniDrawer() {
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <DrawerHeader />
           <Routes>
-            <Route path="/" element={<Page1 />} />
-            <Route path="/page/rlsb-r2-36-62" element={<Page1 />} />
-            <Route path="/page/rlse-alingment" element={<Page2 />} />
-            <Route path="/page/rlse-cycle-time" element={<Page3 />} />
-            <Route path="/page/LRPHP" element={<Page4 />} />
-            <Route path="/page/les-di-af-focus" element={<Page5 />} />
-            <Route path="/page/les-no-exp" element={<Page6 />} />
-            <Route path="/page/screen-tension" element={<ScreenTension />} />
+            <Route path="/" element={<Pagerlsb_r2_36_62 />} />
+            <Route path="/page/rlsb-r2-36-62" element={<Pagerlsb_r2_36_62 />} />
+            <Route
+              path="/page/rlse-alingment"
+              element={<Page_rlse_alingment />}
+            />
+            <Route
+              path="/page/rlse-cycle-time"
+              element={<Page_rlse_cycle_time />}
+            />
+            <Route path="/page/LRPHP" element={<Page_lrphp />} />
+            <Route
+              path="/page/les-di-af-focus"
+              element={<Page_les_di_af_focus />}
+            />
+            <Route path="/page/les-no-exp" element={<Page_les_no_exp />} />
+            <Route
+              path="/page/screen-tension"
+              element={<PageScreenTension />}
+            />
           </Routes>
         </Box>
       </Box>
