@@ -27,7 +27,7 @@ import Page_lrphp from "./Pages/Page-lrphp/main/Page4-LRPHP"; // นำเข้
 import Page_les_di_af_focus from "./Pages/Page-les-di-af-focus/main/Page-les-di-af-focus"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
 import Page_les_no_exp from "./Pages/Page-les-no-exp/main/Page-les-no-exp"; // นำเข้าคอมโพเนนต์ Page1 จากไฟล์ "Page1.js" ในโฟลเดอร์เดียวกัน
 import PageScreenTension from "./Pages/Page-Screen-tension/main/Page-Screen-tension"; // นำเข้าคอมโพเนนต์ Screen Tension จากไฟล์ "Page-Screen-Tension.js" ในโฟลเดอร์เดียวกัน
-
+import Loaction from "./location";
 const drawerWidth = 240; // กำหนดค่าความกว้างของ Drawer เป็น 240
 
 // สร้าง mixin สำหรับสไตล์ของ Drawer เมื่อถูกเปิด
@@ -150,25 +150,7 @@ export default function MiniDrawer() {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" noWrap component="div">
-              {open
-                ? selectedTab
-                : selectedTab === "RLSB-R2-36-62"
-                ? "RLSB-R2-36-62"
-                : selectedTab === "RLSE-Alingment"
-                ? "RLSE-Alingment"
-                : selectedTab === "RLSE-Cycle-Time"
-                ? "RLSE-Cycle-Time"
-                : selectedTab === "LRPHP#"
-                ? "LRPHP#"
-                : selectedTab === "LES-DI-AF-Focus"
-                ? "LES-DI-AF-Focus"
-                : selectedTab === "Screen Tension"
-                ? "Screen Tension"
-                : selectedTab === false
-                ? "LPI"
-                : "LPI"}
-            </Typography>
+            <Loaction />
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>

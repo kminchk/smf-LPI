@@ -46,7 +46,9 @@ export default function QuantitySelect() {
   const fetchDistinctFactory = async () => {
     try {
       const response = await axios.get(
-        "http://10.17.77.111:3001/api/jwdb_rlse_beac/distinctFactory"
+        `${import.meta.env.VITE_IP_API}${
+          import.meta.env.VITE_jwdb_rlse_beac
+        }/distinctFactory`
       );
       const distinctFactory = response.data;
       setDistinctFactory(distinctFactory);
@@ -68,7 +70,9 @@ export default function QuantitySelect() {
   const fetchDistinctMachine = async () => {
     try {
       const response = await axios.get(
-        `http://10.17.77.111:3001/api/jwdb_rlse_beac/distinctMccode?factory=${selectedFactory.factory}`
+        `${import.meta.env.VITE_IP_API}${
+          import.meta.env.VITE_jwdb_rlse_beac
+        }/distinctMccode?factory=${selectedFactory.factory}`
       );
       const distinctMachine = response.data;
       setDistinctMachine(distinctMachine);
@@ -104,7 +108,11 @@ export default function QuantitySelect() {
   const fetchDataapi = async () => {
     try {
       const response = await axios.get(
-        `http://10.17.77.111:3001/api/jwdb_rlse_beac/dataplot?factory=${selectedFactory.factory}&mc_code=${selectedMachine.mc_code}&hours=${quantity}`
+        `${import.meta.env.VITE_IP_API}${
+          import.meta.env.VITE_jwdb_rlse_beac
+        }/dataplot?factory=${selectedFactory.factory}&mc_code=${
+          selectedMachine.mc_code
+        }&hours=${quantity}`
       );
       const dataapi = response.data;
       setData(dataapi);

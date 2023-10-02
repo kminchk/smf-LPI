@@ -107,7 +107,9 @@ export default function Page1() {
   const fetchdistinctfactory = async () => {
     try {
       const response = await axios.get(
-        `http://10.17.77.111:3001/api/fpc_lse_alignment_noexp/distinctfactory`
+        `${import.meta.env.VITE_IP_API}${
+          import.meta.env.VITE_fpc_lse_alignment_noexp
+        }/distinctfactory`
       );
       const fetchDataAPItable = response.data;
       -setDistinctfactory([{ factory: "ALL" }, ...fetchDataAPItable]);
@@ -119,7 +121,9 @@ export default function Page1() {
   const fetchdistinctmc_code = async () => {
     try {
       const response = await axios.get(
-        `http://10.17.77.111:3001/api/fpc_lse_alignment_noexp/distinctmc_code?factory=${selectfactory.factory}`
+        `${import.meta.env.VITE_IP_API}${
+          import.meta.env.VITE_fpc_lse_alignment_noexp
+        }/distinctmc_code?factory=${selectfactory.factory}`
       );
       const fetchDataAPItable = response.data;
       setDistinctmc_code([{ mc_code: "ALL" }, ...fetchDataAPItable]);
@@ -132,7 +136,9 @@ export default function Page1() {
   const fetchdistinctprocess = async () => {
     try {
       const response = await axios.get(
-        "http://10.17.77.111:3001/api/fpc_lse_alignment_noexp/distinctprocess",
+        `${import.meta.env.VITE_IP_API}${
+          import.meta.env.VITE_fpc_lse_alignment_noexp
+        }/distinctprocess`,
         {
           params: {
             factory: selectfactory.factory,
@@ -151,7 +157,9 @@ export default function Page1() {
   const fetchdistinctpos_no = async () => {
     try {
       const response = await axios.get(
-        "http://10.17.77.111:3001/api/fpc_lse_alignment_noexp/distinctpos_no",
+        `${import.meta.env.VITE_IP_API}${
+          import.meta.env.VITE_fpc_lse_alignment_noexp
+        }/distinctpos_no`,
         {
           params: {
             factory: selectfactory.factory,
@@ -171,7 +179,9 @@ export default function Page1() {
   const fetchdistinctproduct_name = async () => {
     try {
       const response = await axios.get(
-        "http://10.17.77.111:3001/api/fpc_lse_alignment_noexp/distinctproduct_name",
+        `${import.meta.env.VITE_IP_API}${
+          import.meta.env.VITE_fpc_lse_alignment_noexp
+        }/distinctproduct_name`,
         {
           params: {
             factory: selectfactory.factory,
@@ -191,7 +201,13 @@ export default function Page1() {
   const fetchDataAPItable = async () => {
     try {
       const response = await axios.get(
-        `http://10.17.77.111:3001/api/fpc_lse_alignment_noexp/table?factory=${selectfactory.factory}&mc_code=${selectmc_code.mc_code}&process=${selectprocess.process}&pos_no=${selectpos_no.pos_no}&product_name=${selectproduct_name.product_name}`
+        `${import.meta.env.VITE_IP_API}${
+          import.meta.env.VITE_fpc_lse_alignment_noexp
+        }/table?factory=${selectfactory.factory}&mc_code=${
+          selectmc_code.mc_code
+        }&process=${selectprocess.process}&pos_no=${
+          selectpos_no.pos_no
+        }&product_name=${selectproduct_name.product_name}`
       );
       const fetchDataAPItable = response.data;
       setDataAPItable(fetchDataAPItable);

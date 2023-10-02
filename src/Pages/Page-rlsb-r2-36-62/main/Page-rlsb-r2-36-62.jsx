@@ -67,7 +67,9 @@ export default function QuantitySelect() {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://10.17.77.111:3001/jwdb_r23662_actv/data?hours=${quantity}`
+        `${import.meta.env.VITE_IP_API}${
+          import.meta.env.VITE_jwdb_r23662_actv
+        }/data?hours=${quantity}`
       );
       const data = response.data;
 

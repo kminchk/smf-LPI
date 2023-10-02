@@ -131,7 +131,9 @@ const ScreenTension = () => {
   const fetchdistinctproduct_name = async () => {
     try {
       const response = await axios.get(
-        `http://10.17.77.111:3001/api/lpi_screen_tension/distinctproduct_name`
+        `${import.meta.env.VITE_IP_API}${
+          import.meta.env.VITE_lpi_screen_tension
+        }/distinctproduct_name`
       );
       const fetchDataAPItable = response.data;
       setDistinctproduct_name([{ product_name: "ALL" }, ...fetchDataAPItable]);
@@ -150,7 +152,9 @@ const ScreenTension = () => {
   const fetchdistinctprocess = async () => {
     try {
       const response = await axios.get(
-        `http://10.17.77.111:3001/api/lpi_screen_tension/distinctprocess?product_name=${selectproduct_name.product_name}`
+        `${import.meta.env.VITE_IP_API}${
+          import.meta.env.VITE_lpi_screen_tension
+        }/distinctprocess?product_name=${selectproduct_name.product_name}`
       );
       const fetchDataAPItable = response.data;
       setDistinctprocess([{ process: "ALL" }, ...fetchDataAPItable]);
@@ -169,7 +173,11 @@ const ScreenTension = () => {
   const fetchdistinctscreenno = async () => {
     try {
       const response = await axios.get(
-        `http://10.17.77.111:3001/api/lpi_screen_tension/distinctscreen_no?product_name=${selectproduct_name.product_name}&process=${selectprocess.process}`
+        `${import.meta.env.VITE_IP_API}${
+          import.meta.env.VITE_lpi_screen_tension
+        }/distinctscreen_no?product_name=${
+          selectproduct_name.product_name
+        }&process=${selectprocess.process}`
       );
       const fetchDataAPItable = response.data;
       setDistinctscreen_no([{ screen_no: "ALL" }, ...fetchDataAPItable]);
@@ -191,7 +199,11 @@ const ScreenTension = () => {
   const fetchDataAPI = async () => {
     try {
       const response = await axios.get(
-        `http://10.17.77.111:3001/api/lpi_screen_tension/dataAPI?product_name=${selectproduct_name.product_name}&process=${selectprocess.process}&screen_no=${selectscreen_no.screen_no}`
+        `${import.meta.env.VITE_IP_API}${
+          import.meta.env.VITE_lpi_screen_tension
+        }/dataAPI?product_name=${selectproduct_name.product_name}&process=${
+          selectprocess.process
+        }&screen_no=${selectscreen_no.screen_no}`
       );
       const fetchDataAPItable = response.data;
       setDataAPI(fetchDataAPItable);

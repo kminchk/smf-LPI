@@ -49,7 +49,9 @@ export default function QuantitySelect() {
   const fetchdistinctmc_code = async () => {
     try {
       const response = await axios.get(
-        "http://10.17.77.111:3001/api/jwdb_rphp_beac_actv/distinctmc_code"
+        `${import.meta.env.VITE_IP_API}${
+          import.meta.env.VITE_jwdb_rphp_beac_actv
+        }/distinctmc_code`
       );
       const distinctmc_code = response.data;
       setdistinctmc_code(distinctmc_code);
@@ -79,7 +81,9 @@ export default function QuantitySelect() {
   const fetchDataapi = async () => {
     try {
       const response = await axios.get(
-        `http://10.17.77.111:3001/api/jwdb_rphp_beac_actv/data-plot?mc_code=${selectedmc_code.mc_code}&hours=${quantity}`
+        `${import.meta.env.VITE_IP_API}${
+          import.meta.env.VITE_jwdb_rphp_beac_actv
+        }/data-plot?mc_code=${selectedmc_code.mc_code}&hours=${quantity}`
       );
       const dataapi = response.data;
       setData(dataapi);
